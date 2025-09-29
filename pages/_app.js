@@ -1,0 +1,16 @@
+// pages/_app.js
+import '../styles/globals.css';
+import Header from '@components/layout/Header';
+import Footer from '@components/layout/Footer';
+import { Toaster } from '@components/ui/sonner';
+
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
+      <Toaster richColors closeButton />
+    </>
+  );
+}
