@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react';
 
-const Footer = () => {
+export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
@@ -29,5 +31,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

@@ -1,3 +1,5 @@
+"use client";
+
 import StrategyTable from '@/components/simulator/StrategyTable';
 
 export default function StrategyTables({ strategies, onStrategyChange, currency }) {

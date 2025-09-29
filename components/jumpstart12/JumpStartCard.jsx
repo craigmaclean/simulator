@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react'
 
-const JumpStartCard = ({ title, description }) => {
+export default function JumpStartCard({ title, description }) {
     return (
         <div className="flip-card h-[8rem]">
             <div className="flip-card-inner">
@@ -14,5 +16,3 @@ const JumpStartCard = ({ title, description }) => {
         </div>
     );
 }
-
-export default JumpStartCard

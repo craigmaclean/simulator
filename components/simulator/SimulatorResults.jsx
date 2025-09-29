@@ -1,3 +1,5 @@
+"use client";
+
 import SimulatorResult from '@/components/simulator/SimulatorResult';
 import { formatCurrency } from '../../utils/formatters';
 

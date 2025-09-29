@@ -1,7 +1,9 @@
-import React from 'react'
-import CtaButton from '@components/shared/CtaButton';
+"use client";
 
-const DeepDiveCta = () => {
+import React from 'react'
+import CtaButton from '@/components/shared/CtaButton';
+
+export default function DeepDiveCta() {
     return (
 
         <section id="cta" className="py-16 bg-navy">
@@ -22,5 +24,3 @@ const DeepDiveCta = () => {
 
     );
 }
-
-export default DeepDiveCta

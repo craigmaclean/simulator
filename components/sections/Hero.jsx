@@ -1,8 +1,10 @@
-import React from "react";
-import VideoPlayer from "@components/shared/VideoPlayer";
-import CtaButton from "@components/shared/CtaButton";
+"use client";
 
-const Hero = () => {
+import React from "react";
+import VideoPlayer from "@/components/shared/VideoPlayer";
+import CtaButton from "@/components/shared/CtaButton";
+
+export default function Hero() {
     return (
         <section id="hero" className="relative py-16 md:py-24 overflow-hidden">
             {/* Background Image with Overlay */}
@@ -32,5 +34,3 @@ const Hero = () => {
         </section>
     );
 };
-
-export default Hero;

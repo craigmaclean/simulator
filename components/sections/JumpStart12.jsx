@@ -1,8 +1,10 @@
-import React from 'react'
-import JumpStartGrid from "@components/jumpstart12/JumpStartGrid";
-import JumpStartCard from "@components/jumpstart12/JumpStartCard";
+"use client";
 
-const JumpStart12 = () => {
+import React from 'react'
+import JumpStartGrid from "@/components/jumpstart12/JumpStartGrid";
+import JumpStartCard from "@/components/jumpstart12/JumpStartCard";
+
+export default function JumpStart12() {
     return (
 
         <section id="jumpstart-12" className="py-16 bg-light-blue">
@@ -23,5 +25,3 @@ const JumpStart12 = () => {
 
     );
 }
-
-export default JumpStart12

@@ -1,4 +1,4 @@
-import Hero from "../components/sections/Hero";
+import Hero from "@/components/sections/Hero";
 import PowerOfCompounding from "../components/sections/PowerOfCompounding";
 import DeepDiveCta from "../components/sections/DeepDiveCta";
 import CtaButton from "../components/shared/CtaButton";

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo } from 'react';
 import SimulatorInputPanel from '@/components/simulator/SimulatorInputPanel';
 import ImpactSlider from '@/components/simulator/ImpactSlider';
@@ -6,7 +8,7 @@ import SimulatorResults from '@/components/simulator/SimulatorResults';
 import { calculateResults } from '../../utils/calculations';
 import { STRATEGIES_12 } from '../../data/strategies';
 
-const Simulator = () => {
+export default function Simulator() {
   const [formData, setFormData] = useState({
     currency: 'USD',
     revenue: 0,
@@ -90,5 +92,3 @@ const Simulator = () => {
     </section>
   );
 }
-
-export default Simulator;

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { formatCurrency } from "../../utils/formatters";
 import { Input } from "../ui/input";

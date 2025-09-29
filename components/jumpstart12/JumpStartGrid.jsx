@@ -1,7 +1,9 @@
-import React from 'react'
-import JumpStartCard from '@components/jumpstart12/JumpStartCard';
+"use client";
 
-const JumpStartGrid = () => {
+import React from 'react'
+import JumpStartCard from '@/components/jumpstart12/JumpStartCard';
+
+export default function JumpStartGrid() {
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {/* All 12 cards with updated font sizes */}
@@ -31,5 +33,3 @@ const JumpStartGrid = () => {
         </div>
     );
 }
-
-export default JumpStartGrid

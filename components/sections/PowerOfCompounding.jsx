@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react'
 
-const PowerOfCompounding = () => {
+export default function PowerOfCompounding() {
     return (
 
         <section id="overlooked-power" className="py-16">
@@ -33,5 +35,3 @@ const PowerOfCompounding = () => {
 
     );
 }
-
-export default PowerOfCompounding

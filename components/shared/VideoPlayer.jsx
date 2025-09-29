@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react'
 
-const VideoPlayer = () => {
+export default function VideoPlayer() {
     return (
 
         <div className="relative rounded-md overflow-hidden shadow-lg">
@@ -31,5 +33,3 @@ const VideoPlayer = () => {
 
     );
 }
-
-export default VideoPlayer;

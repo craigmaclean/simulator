@@ -1,3 +1,5 @@
+"use client";
+
 export default function SimulatorResult({ label, value }) {
   return (
     <div className="bg-light-gray rounded-lg p-6 text-center">

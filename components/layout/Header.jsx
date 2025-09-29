@@ -1,7 +1,9 @@
-import React from 'react'
-import CtaButton from '@components/shared/CtaButton';
+"use client";
 
-const Header = () => {
+import React from 'react'
+import CtaButton from '@/components/shared/CtaButton';
+
+export default function Header() {
     return (
 
         <header className="bg-white border-b border-gray-200">
@@ -22,5 +24,3 @@ const Header = () => {
 
     );
 }
-
-export default Header
