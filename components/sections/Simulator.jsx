@@ -5,7 +5,7 @@ import SimulatorInputPanel from '@/components/simulator/SimulatorInputPanel';
 import ImpactSlider from '@/components/simulator/ImpactSlider';
 import StrategyTables from '@/components/simulator/StrategyTables';
 import SimulatorResults from '@/components/simulator/SimulatorResults';
-import { calculateResults } from '../../utils/calculations';
+import { calculateResults } from '@/lib/calc/calculateResults';
 import { STRATEGIES_12 } from '../../data/strategies';
 
 export default function Simulator() {

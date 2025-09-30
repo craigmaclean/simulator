@@ -61,7 +61,7 @@ export default function StrategyTable({
                       aria-label={`${strategy.name} impact percent`}
                       className="impact-input w-20 text-right"
                     />
-                    <span className="ml-1 text-sm text-gray-500">%</span>
+                    <span className="ml-1 text-base text-gray-500">%</span>
                   </div>
                 </TableCell>
 
