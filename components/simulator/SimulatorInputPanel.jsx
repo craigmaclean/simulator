@@ -7,7 +7,36 @@ import {
   Select, SelectTrigger, SelectValue, SelectContent, SelectItem
 } from "@/components/ui/select";
 
+
+const formatNumber = (num) => {
+  if (!num && num !== 0) return '';
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+const parseFormattedNumber = (str) => {
+  const cleaned = str.replace(/,/g, '');
+  return parseFloat(cleaned) || 0;
+};
+
 export default function SimulatorInputPanel({ formData, onChange }) {
+
+    // Get currency symbol
+    const currentCurrency = CURRENCIES.find(c => c.code === formData.currency);
+    const currencySymbol = currentCurrency?.symbol || '$';
+
+    // Format display value
+    const displayValue = formData.revenue
+        ? `${currencySymbol}${formatNumber(formData.revenue)}`
+        : '';
+
+    // Handle revenue input
+    const handleRevenueChange = (e) => {
+        const input = e.target.value;
+        const cleaned = input.replace(/[^0-9,]/g, '');
+        const numericValue = parseFormattedNumber(cleaned);
+        onChange('revenue', numericValue);
+    };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 mb-8">
       <div className="lg:col-span-2">
@@ -23,7 +52,6 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             <SelectTrigger className="w-full">
             <SelectValue placeholder="Select..." />
             </SelectTrigger>
-
             <SelectContent className="max-h-64 overflow-y-auto">
             {CURRENCIES.map((curr) => (
                 <SelectItem key={curr.code} value={curr.code}>
@@ -40,12 +68,11 @@ export default function SimulatorInputPanel({ formData, onChange }) {
         </Label>
         <Input
             id="revenue"
-            type="number"
+            type="text"
             inputMode="numeric"
-            min={0}
-            step="1"
-            value={formData.revenue}
-            onChange={(e) => onChange('revenue', parseFloat(e.target.value) || 0)}
+            value={displayValue}
+            onChange={handleRevenueChange}
+            placeholder={`${currencySymbol}0`}
         />
       </div>
 

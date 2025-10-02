@@ -3,7 +3,7 @@
 import React from 'react'
 import CtaButton from '@/components/shared/CtaButton';
 
-export default function DeepDiveCta() {
+export default function DeepDiveCta({ onDeepDive = () => {} }) {
     return (
 
         <section id="cta" className="py-16 bg-navy">
@@ -13,7 +13,7 @@ export default function DeepDiveCta() {
                 Expand beyond the JumpStart 12 impact areas and discover the power of incremental changes in up to 40 key areas.
             </p>
 
-            <CtaButton variant="accent" size="large">Deep Dive Your Profits Further</CtaButton>
+            <CtaButton onClick={() => onDeepDive?.()} variant="accent" size="large">Deep Dive Your Profits Further</CtaButton>
 
             <p className="text-white text-base mb-3">I don't want to deep dive my profits further.</p>
 
