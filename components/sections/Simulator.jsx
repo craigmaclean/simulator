@@ -6,15 +6,16 @@ import ImpactSlider from "@/components/simulator/ImpactSlider";
 import StrategyTables from "@/components/simulator/StrategyTables";
 import SimulatorResults from "@/components/simulator/SimulatorResults";
 import DeepDive40 from "@/components/sections/DeepDive40";
+import CtaButton from "@/components/shared/CtaButton";
 
 import { calculateResults } from "@/lib/calc/calculateResults";
-import { calculateDeepDive } from "@/lib/calc/calculateDeepDive";
+// import { calculateDeepDive } from "@/lib/calc/calculateDeepDive"; // keep if you use elsewhere
 
-import { STRATEGIES_12, STRATEGIES_DEEPDIVE } from "@/data/strategies";
+import { STRATEGIES_12 /*, STRATEGIES_DEEPDIVE */ } from "@/data/strategies";
 
-export default function Simulator({ onFormSnapshot }) {
-
-    const [formData, setFormData] = useState({
+export default function Simulator({ onFormSnapshot, onOpenReport }) {
+  // ---- shared simulator state ----
+  const [formData, setFormData] = useState({
     currency: "USD",
     revenue: 0,
     grossMargin: 0,
@@ -23,7 +24,7 @@ export default function Simulator({ onFormSnapshot }) {
     strategies: STRATEGIES_12.map((s) => ({ ...s, impact: 0 })),
   });
 
-  // Legacy 12-row calculations
+  // ---- calculations (unchanged) ----
   const results = useMemo(() => calculateResults(formData), [formData]);
 
   const strategiesWithResults = useMemo(() => {
@@ -36,7 +37,7 @@ export default function Simulator({ onFormSnapshot }) {
     }));
   }, [formData.strategies, results.strategyResults]);
 
-  // Handlers
+  // ---- handlers (unchanged) ----
   const handleInputChange = (field, value) =>
     setFormData((prev) => ({ ...prev, [field]: value }));
 
@@ -55,8 +56,7 @@ export default function Simulator({ onFormSnapshot }) {
       ),
     }));
 
-
-    // NEW: mirror the fields Deep Dive needs up to the parent
+  // Mirror limited fields upward if parent asked for it
   useEffect(() => {
     if (typeof onFormSnapshot === "function") {
       onFormSnapshot({
@@ -101,19 +101,20 @@ export default function Simulator({ onFormSnapshot }) {
         <SimulatorResults results={results} currency={formData.currency} />
 
         <DeepDive40
-            currency={formData.currency}
-            revenue={formData.revenue}
-            grossMargin={formData.grossMargin}
-            netMargin={formData.netMargin}
-            globalImpact={formData.globalImpact}
+          currency={formData.currency}
+          revenue={formData.revenue}
+          grossMargin={formData.grossMargin}
+          netMargin={formData.netMargin}
+          globalImpact={formData.globalImpact}
         />
 
         <div className="text-center mt-8">
-          <button className="bg-navy text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-opacity-85 transition">
-            SEND ME THE REPORT
-          </button>
+          <CtaButton onClick={onOpenReport} variant="primary" className="px-8 py-4 text-lg font-semibold hover:bg-opacity-85 transition">
+            Send Me the Report
+          </CtaButton>
         </div>
       </div>
+
     </section>
   );
 }

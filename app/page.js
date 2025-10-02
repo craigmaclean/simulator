@@ -11,8 +11,12 @@ import Footer from "@/components/layout/Footer";
 import JumpStart12 from "@/components/sections/JumpStart12";
 import Simulator from "@/components/sections/Simulator";
 import DeepDive40 from "@/components/sections/DeepDive40";
+import SendReportDialog from "@/components/shared/SendReportDialog";
 
 export default function Home() {
+    const [isReportOpen, setIsReportOpen] = useState(false);
+    const openReport = () => setIsReportOpen(true);
+
     const [showDeepDive, setShowDeepDive] = useState(false);
     const [deepDiveForm, setDeepDiveForm] = useState({
         currency: "USD",
@@ -45,9 +49,9 @@ export default function Home() {
 
         <JumpStart12 />
 
-        <Simulator onFormSnapshot={setDeepDiveForm} />
+        <Simulator onFormSnapshot={setDeepDiveForm} onOpenReport={openReport} />
 
-        <DeepDiveCta onDeepDive={handleOpenDeepDive} />
+        <DeepDiveCta onDeepDive={handleOpenDeepDive} onOpenReport={openReport} />
 
         <DeepDive40
             ref={deepDiveRef}
@@ -58,6 +62,9 @@ export default function Home() {
             netMargin={deepDiveForm.netMargin}
             globalImpact={deepDiveForm.globalImpact}
         />
+
+        {/* One shared, controlled dialog instance */}
+        <SendReportDialog open={isReportOpen} onOpenChange={setIsReportOpen} />
 
         </>
     );
