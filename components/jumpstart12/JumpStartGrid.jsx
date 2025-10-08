@@ -5,7 +5,7 @@ import JumpStartCard from '@/components/jumpstart12/JumpStartCard';
 
 export default function JumpStartGrid() {
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
             {/* All 12 cards with updated font sizes */}
             <JumpStartCard title="Cut Costs" description="Reduce unnecessary expenses &amp; improve efficiency." />
 
