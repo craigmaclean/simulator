@@ -18,30 +18,50 @@ export default function SendReportDialog({
   open,
   onOpenChange,
   defaultValues = { firstName: "", lastName: "", email: "" },
-  onSubmit, // optional override hook for later (e.g., API call)
+  simulationData,
 }) {
   const [form, setForm] = useState(defaultValues);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.firstName || !form.lastName || !form.email) {
-      toast.error?.("Please fill out all fields.");
+      toast.error("Please fill out all fields.");
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
-      if (typeof onSubmit === "function") {
-        await onSubmit(form);
-      } else {
-        // stub: replace with your real action later
-        console.log("Lead form submitted:", form);
+      const response = await fetch("/api/simulation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          ...simulationData,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to save simulation");
       }
-      toast.success?.("Thanks! We’ll send your report.");
+
+      console.log("Simulation saved with ID:", data.id);
+      toast.success("Thanks! We'll send your report.");
       onOpenChange(false);
+
+      // Reset form
+      setForm({ firstName: "", lastName: "", email: "" });
     } catch (err) {
-      console.error(err);
-      toast.error?.("Something went wrong. Please try again.");
+      console.error("Submission error:", err);
+      toast.error(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -51,7 +71,7 @@ export default function SendReportDialog({
         <DialogHeader>
           <DialogTitle className="text-2xl mb-1">Send me the report</DialogTitle>
           <DialogDescription className="text-base mb-1">
-            Enter your details and we’ll email your Profit Acceleration report.
+            Enter your details and we'll email your Profit Acceleration report.
           </DialogDescription>
         </DialogHeader>
 
@@ -68,6 +88,7 @@ export default function SendReportDialog({
                 onChange={(e) => setForm({ ...form, firstName: e.target.value })}
                 className="p-4 h-12"
                 required
+                disabled={isSubmitting}
               />
             </div>
             <div className="text-left">
@@ -81,6 +102,7 @@ export default function SendReportDialog({
                 onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                 className="p-4 h-12"
                 required
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -97,6 +119,7 @@ export default function SendReportDialog({
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="p-4 h-12"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -106,11 +129,16 @@ export default function SendReportDialog({
               variant="outline"
               className="cursor-pointer"
               onClick={() => onOpenChange(false)}
+              disabled={isSubmitting}
             >
               Cancel
             </Button>
-            <Button type="submit" className="bg-navy text-white hover:bg-opacity-85 transition">
-              Send report
+            <Button
+              type="submit"
+              className="bg-navy text-white hover:bg-opacity-85 transition"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending..." : "Send report"}
             </Button>
           </DialogFooter>
         </form>
