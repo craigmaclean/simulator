@@ -57,6 +57,7 @@ export default function StrategyTable({
                       step={0.1}
                       value={strategy.impact}
                       onChange={(e) => handleChange(actualIndex, e)}
+                      onFocus={(e) => e.target.select()}
                       onWheel={(e) => e.currentTarget.blur()} // avoid accidental scroll changes
                       aria-label={`${strategy.name} impact percent`}
                       className="impact-input w-20 text-right"

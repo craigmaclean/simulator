@@ -72,6 +72,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             inputMode="numeric"
             value={displayValue}
             onChange={handleRevenueChange}
+            onFocus={(e) => e.target.select()}
             placeholder={`${currencySymbol}0`}
         />
       </div>
@@ -89,6 +90,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             step="0.1"
             value={formData.grossMargin}
             onChange={(e) => onChange('grossMargin', parseFloat(e.target.value) || 0)}
+            onFocus={(e) => e.target.select()}
         />
       </div>
 
@@ -105,6 +107,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             step="0.1"
             value={formData.netMargin}
             onChange={(e) => onChange('netMargin', parseFloat(e.target.value) || 0)}
+            onFocus={(e) => e.target.select()}
         />
       </div>
     </div>

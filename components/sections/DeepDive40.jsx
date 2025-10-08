@@ -35,6 +35,12 @@ const DeepDive40 = forwardRef(function DeepDive40(
           Deep Dive 40 Areas of Impact
         </h2>
 
+        { globalImpact != null && globalImpact > 0 && (
+            <p className="text-body text-center text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        The profit increase values below are based on a <strong>{globalImpact}% impact</strong>.
+        </p>
+        )}
+
         <div className="bg-white rounded-lg shadow-lg p-8">
           <DeepDiveTables rows={deepDive.rows} currency={currency} />
         </div>
