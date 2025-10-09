@@ -1,7 +1,3 @@
-"use client";
-
-import React from 'react'
-
 export default function JumpStartCard({ title, description }) {
     return (
         <div className="flip-card h-[6rem] md:h-[8rem]">

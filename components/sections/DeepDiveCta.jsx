@@ -1,5 +1,3 @@
-"use client";
-
 import CtaButton from "@/components/shared/CtaButton";
 
 export default function DeepDiveCta({
@@ -8,11 +6,11 @@ export default function DeepDiveCta({
                                     }) {
   return (
     <section id="cta" className="py-16 bg-navy">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 font-bold text-white mb-6">
+      <div className="px-4 mx-auto text-center max-w-7xl">
+        <h2 className="mb-6 font-bold text-white text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2">
           Ready to Accelerate Your Growth?
         </h2>
-        <p className="text-body text-white mb-8 max-w-2xl mx-auto">
+        <p className="max-w-2xl mx-auto mb-8 text-white text-body">
           Expand beyond the JumpStart 12 impact areas and discover the power of incremental changes in up to 40 key areas.
         </p>
 
@@ -22,7 +20,7 @@ export default function DeepDiveCta({
           </CtaButton>
         )}
 
-        <p className="text-white text-base mb-3 mt-6">
+        <p className="mt-6 mb-3 text-base text-white">
           I don&apos;t want to deep dive my profits further.
         </p>
 

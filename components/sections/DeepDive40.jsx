@@ -1,4 +1,3 @@
-// components/simulator/DeepDive40.jsx
 "use client";
 
 import React, { forwardRef, useMemo } from "react";
@@ -30,22 +29,22 @@ const DeepDive40 = forwardRef(function DeepDive40(
       id="deepDive40"
       className="py-16 bg-gray-50 scroll-mt-24"
     >
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-h2-mobile md:text-h2-tablet lg:text-h2 font-bold text-navy text-center mb-8">
+      <div className="px-4 mx-auto max-w-7xl">
+        <h2 className="mb-8 font-bold text-center text-h2-mobile md:text-h2-tablet lg:text-h2 text-navy">
           Deep Dive 40 Areas of Impact
         </h2>
 
         { globalImpact != null && globalImpact > 0 && (
-            <p className="text-body text-center text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="max-w-2xl mx-auto leading-relaxed text-center text-gray-600 text-body">
         The profit increase values below are based on a <strong>{globalImpact}% impact</strong>.
         </p>
         )}
 
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="p-8 bg-white rounded-lg shadow-lg">
           <DeepDiveTables rows={deepDive.rows} currency={currency} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-3">
           <SummaryCard
             label="EXPECTED REVENUE INCREASE"
             value={deepDive.revenueIncrease}
@@ -74,7 +73,7 @@ function SummaryCard({ label, value, currency }) {
   const symbol = symbols[currency] || "$";
   const display = `${symbol}${Math.round(value).toLocaleString("en-US")}`;
   return (
-    <div className="bg-light-gray rounded-lg p-6 text-center">
+    <div className="p-6 text-center rounded-lg bg-light-gray">
       <h3 className="text-[1rem] font-semibold text-gray-600 mb-2 tracking-tight">
         {label}
       </h3>

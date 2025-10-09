@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import VideoPlayer from "@/components/shared/VideoPlayer";
 import CtaButton from "@/components/shared/CtaButton";

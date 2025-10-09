@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 const base =
     "inline-flex items-center justify-center font-semibold uppercase rounded-md transition cursor-pointer mb-4 hover:opacity-[0.95] focus:outline-none";
 
