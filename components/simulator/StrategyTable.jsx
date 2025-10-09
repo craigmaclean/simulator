@@ -37,7 +37,24 @@ export default function StrategyTable({
                 % IMPACT
             </TableHead>
             <TableHead className="px-2 py-3 text-xs text-right text-white break-words sm:text-base sm:px-4 whitespace-nowrap w-[30%] sm:w-auto">
-                PROFIT INCREASE
+                {/* Visible on 'md' screens and above */}
+                <span className="hidden md:inline">
+                    PROFIT INCREASE
+                </span>
+
+                {/* Visible on screens smaller than 'md' */}
+                <span className="flex items-center md:hidden">
+                    PROFIT
+                    <svg
+                    className="w-3 h-3 ml-2 text-white"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 14"
+                    >
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
+                    </svg>
+                </span>
             </TableHead>
             </TableRow>
         </TableHeader>
