@@ -7,8 +7,8 @@ export default function StrategyTables({ strategies, onStrategyChange, currency 
   const rightStrategies = strategies.slice(6, 12);
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="mb-8 bg-white rounded-lg shadow-lg sm:p-8">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 sm:gap-8">
         <StrategyTable
           strategies={leftStrategies}
           onStrategyChange={onStrategyChange}

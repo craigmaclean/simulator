@@ -78,12 +78,12 @@ export default function Simulator({ onFormSnapshot, onOpenReport }) {
 
   return (
     <section id="simulator" className="py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-h2-mobile md:text-h2-tablet lg:text-h2 font-bold text-navy text-center mb-12">
+      <div className="px-4 mx-auto max-w-7xl">
+        <h2 className="mb-0 font-bold text-center leading-h2 text-h2-mobile md:text-h2-tablet lg:text-h2 text-navy md:mb-12">
           Profit Acceleration Simulator
         </h2>
 
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <div className="p-8 mb-8 bg-white rounded-lg shadow-lg">
           <SimulatorInputPanel formData={formData} onChange={handleInputChange} />
           <ImpactSlider
             value={formData.globalImpact}
@@ -108,8 +108,8 @@ export default function Simulator({ onFormSnapshot, onOpenReport }) {
           globalImpact={formData.globalImpact}
         />
 
-        <div className="text-center mt-8">
-          <CtaButton onClick={onOpenReport} variant="primary" className="px-8 py-4 text-lg font-semibold hover:bg-opacity-85 transition">
+        <div className="mt-8 text-center">
+          <CtaButton onClick={onOpenReport} variant="primary" className="px-8 py-4 text-lg font-semibold transition hover:bg-opacity-85">
             Send Me the Report
           </CtaButton>
         </div>

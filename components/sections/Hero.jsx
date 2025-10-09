@@ -15,7 +15,7 @@ export default function Hero() {
                 <div className="grid items-center gap-12 md:grid-cols-2">
                     {/* Left Column */}
                     <div>
-                    <h1 className="mb-6 font-bold text-h1-mobile md:text-h1-tablet lg:text-h1 leading-h1 text-navy">
+                    <h1 className="mb-6 font-bold text-center md:text-left text-h1-mobile md:text-h1-tablet lg:text-h1 leading-h1 text-navy">
                         Unlock the Power of Compounding Growth in Your Business
                     </h1>
                     <p className="mb-8 leading-relaxed text-gray-600 text-body">

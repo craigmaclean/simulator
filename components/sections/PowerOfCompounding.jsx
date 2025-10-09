@@ -10,7 +10,7 @@ export default function PowerOfCompounding() {
                     </div>
                     {/* Right Column - Content */}
                     <div className="order-1 md:order-2">
-                    <h2 className="mb-6 font-bold text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 text-navy">
+                    <h2 className="mb-6 font-bold text-center md:text-left text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 text-navy">
                         The Overlooked Power of 1% Improvements
                     </h2>
                     <div className="space-y-4">

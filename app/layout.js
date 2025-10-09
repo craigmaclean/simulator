@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <Header />
         {/* Client-only providers (Sonner Toaster, etc.) */}
         <Providers>{children}</Providers>
-        <Footer />
+        {/*<Footer />*/}
       </body>
     </html>
   );
