@@ -9,7 +9,7 @@ const variants = {
 
 const sizes = {
     default: "px-8 py-3 text-base",
-    large: "px-8 py-4 text-2xl",
+    large: "px-8 py-4 text-xl sm:text-2xl",
 };
 
 export default function CtaButton({
