@@ -100,13 +100,13 @@ export default function Simulator({ onFormSnapshot, onOpenReport }) {
 
         <SimulatorResults results={results} currency={formData.currency} />
 
-        <DeepDive40
+        {/* <DeepDive40
           currency={formData.currency}
           revenue={formData.revenue}
           grossMargin={formData.grossMargin}
           netMargin={formData.netMargin}
           globalImpact={formData.globalImpact}
-        />
+        /> */}
 
         <div className="mt-8 text-center">
           <CtaButton onClick={onOpenReport} variant="primary" className="px-8 py-4 text-lg font-semibold transition hover:bg-opacity-85">

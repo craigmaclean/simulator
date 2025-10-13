@@ -2,8 +2,9 @@
 
 import React, { forwardRef, useMemo } from "react";
 import DeepDiveTables from "@/components/simulator/DeepDiveTables";
+import { calculateResults } from "@/lib/calc/calculateResults";
 import { calculateDeepDive } from "@/lib/calc/calculateDeepDive";
-import { STRATEGIES_DEEPDIVE } from "@/data/strategies";
+import { STRATEGIES_12, STRATEGIES_DEEPDIVE } from "@/data/strategies";
 
 const DeepDive40 = forwardRef(function DeepDive40(
   { show, currency, revenue, grossMargin, netMargin, globalImpact },
@@ -11,17 +12,43 @@ const DeepDive40 = forwardRef(function DeepDive40(
 ) {
   if (!show) return null;
 
-  const deepDive = useMemo(
-    () =>
-      calculateDeepDive({
+  // First, calculate Table One results to get the revenue increase
+  const tableOneResults = useMemo(
+    () => {
+      const result = calculateResults({
         revenue,
         grossMargin,
         netMargin,
-        impact: globalImpact,
-        strategies: STRATEGIES_DEEPDIVE,
-      }),
+        strategies: STRATEGIES_12.map(s => ({ ...s, impact: globalImpact || 0 })),
+      });
+
+      return result;
+    },
     [revenue, grossMargin, netMargin, globalImpact]
   );
+
+  const deepDive = useMemo(
+    () => calculateDeepDive({
+        revenue: revenue,
+        tableOneRevenueIncrease: tableOneResults.revenueIncrease,
+        grossMargin,
+        netMargin,
+        globalImpact,
+        strategies: STRATEGIES_DEEPDIVE,
+    }),
+    [revenue, tableOneResults.revenueIncrease, grossMargin, netMargin, globalImpact]
+    );
+
+    // Display calculations
+    const expectedRevenueIncrease = deepDive.deepDiveRevenueIncrease;
+    const expectedNetProfitIncrease = tableOneResults.profitIncrease + deepDive.deepDiveProfitIncrease;
+    const expectedFiveYearImpact = expectedNetProfitIncrease * 5;
+    const newAnnualProfit = tableOneResults.currentProfit + expectedNetProfitIncrease;
+
+  // Combined totals for display
+  const deepDiveRevenueIncrease = deepDive.deepDiveRevenueIncrease;
+  const combinedProfitIncrease = tableOneResults.profitIncrease + deepDive.deepDiveProfitIncrease;
+  const combinedFiveYearImpact = combinedProfitIncrease * 5;
 
   return (
     <section
@@ -34,10 +61,10 @@ const DeepDive40 = forwardRef(function DeepDive40(
           Deep Dive 40 Areas of Impact
         </h2>
 
-        { globalImpact != null && globalImpact > 0 && (
-            <p className="max-w-2xl mx-auto leading-relaxed text-center text-gray-600 text-body">
-        The profit increase values below are based on a <strong>{globalImpact}% impact</strong>.
-        </p>
+        {globalImpact != null && globalImpact > 0 && (
+          <p className="max-w-2xl mx-auto leading-relaxed text-center text-gray-600 text-body">
+            The profit increase values below are based on a <strong>{globalImpact}% impact</strong>.
+          </p>
         )}
 
         <div className="p-8 bg-white rounded-lg shadow-lg">
@@ -47,17 +74,17 @@ const DeepDive40 = forwardRef(function DeepDive40(
         <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-3">
           <SummaryCard
             label="EXPECTED REVENUE INCREASE"
-            value={deepDive.revenueIncrease}
+            value={deepDiveRevenueIncrease}
             currency={currency}
           />
           <SummaryCard
-            label="EXPECTED NET PROFIT INCREASE"
-            value={deepDive.profitIncrease}
+            label="NEW ANNUAL PROFIT"
+            value={tableOneResults.currentProfit + combinedProfitIncrease}
             currency={currency}
           />
           <SummaryCard
             label="EXPECTED 5-YEAR NET PROFIT IMPACT"
-            value={deepDive.fiveYearImpact}
+            value={combinedFiveYearImpact}
             currency={currency}
           />
         </div>
