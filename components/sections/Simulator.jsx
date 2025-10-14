@@ -13,7 +13,8 @@ import { calculateResults } from "@/lib/calc/calculateResults";
 
 import { STRATEGIES_12 /*, STRATEGIES_DEEPDIVE */ } from "@/data/strategies";
 
-export default function Simulator({ onFormSnapshot, onOpenReport }) {
+export default function Simulator({ onFormSnapshot, onCalculationResults, onOpenReport }) {
+
   // ---- shared simulator state ----
   const [formData, setFormData] = useState({
     currency: "USD",
@@ -24,8 +25,14 @@ export default function Simulator({ onFormSnapshot, onOpenReport }) {
     strategies: STRATEGIES_12.map((s) => ({ ...s, impact: 0 })),
   });
 
-  // ---- calculations (unchanged) ----
+  // ---- calculations ----
   const results = useMemo(() => calculateResults(formData), [formData]);
+
+  useEffect(() => {
+    if (onCalculationResults && results) {
+      onCalculationResults((prev) => ({ ...prev, tableOne: results }));
+    }
+  }, [results, onCalculationResults]);
 
   const strategiesWithResults = useMemo(() => {
     const mapById = Object.fromEntries(

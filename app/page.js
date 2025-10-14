@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 import Hero from "@/components/sections/Hero";
 import PowerOfCompounding from "@/components/sections/PowerOfCompounding";
@@ -11,58 +11,86 @@ import DeepDive40 from "@/components/sections/DeepDive40";
 import SendReportDialog from "@/components/shared/SendReportDialog";
 
 export default function Home() {
-    const [isReportOpen, setIsReportOpen] = useState(false);
-    const openReport = () => setIsReportOpen(true);
+  const [isReportOpen, setIsReportOpen] = useState(false);
+  const openReport = () => setIsReportOpen(true);
 
-    const [showDeepDive, setShowDeepDive] = useState(false);
-    const [deepDiveForm, setDeepDiveForm] = useState({
-        currency: "USD",
-        revenue: 0,
-        grossMargin: 0,
-        netMargin: 0,
-        globalImpact: 0,
-    });
+  const [showDeepDive, setShowDeepDive] = useState(false);
+  const [deepDiveForm, setDeepDiveForm] = useState({
+    currency: "USD",
+    revenue: 0,
+    grossMargin: 0,
+    netMargin: 0,
+    globalImpact: 0,
+  });
 
-    const deepDiveRef = useRef(null);
+  const [calculationResults, setCalculationResults] = useState({
+    tableOne: null,
+    deepDive: null,
+  });
 
-    const handleOpenDeepDive = () => setShowDeepDive(true);
+  const deepDiveRef = useRef(null);
 
-    // Smooth scroll when Deep Dive becomes visible
-    useEffect(() => {
-        if (showDeepDive && deepDiveRef.current) {
-        deepDiveRef.current.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-        }
-    }, [showDeepDive]);
+  const handleOpenDeepDive = () => setShowDeepDive(true);
 
-    return (
-        <>
+  // memoize the calculation results handler
+  const handleCalculationResults = useCallback((updater) => {
+    setCalculationResults(updater);
+  }, []);
 
-        <Hero />
+  // memoize the deep dive results handler
+  const handleDeepDiveResults = useCallback((results) => {
+    setCalculationResults(prev => ({ ...prev, deepDive: results }));
+  }, []);
 
-        <PowerOfCompounding />
+  // Smooth scroll when Deep Dive becomes visible
+  useEffect(() => {
+    if (showDeepDive && deepDiveRef.current) {
+      deepDiveRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [showDeepDive]);
 
-        <JumpStart12 />
+  return (
+    <>
+      <Hero />
 
-        <Simulator onFormSnapshot={setDeepDiveForm} onOpenReport={openReport} />
+      <PowerOfCompounding />
 
-        <DeepDiveCta onDeepDive={handleOpenDeepDive} onOpenReport={openReport} />
+      <JumpStart12 />
 
-        <DeepDive40
-            ref={deepDiveRef}
-            show={showDeepDive}
-            currency={deepDiveForm.currency}
-            revenue={deepDiveForm.revenue}
-            grossMargin={deepDiveForm.grossMargin}
-            netMargin={deepDiveForm.netMargin}
-            globalImpact={deepDiveForm.globalImpact}
-        />
+      <Simulator
+        onFormSnapshot={setDeepDiveForm}
+        onCalculationResults={handleCalculationResults} // use memoized callback
+        onOpenReport={openReport}
+      />
 
-        {/* One shared, controlled dialog instance */}
-        <SendReportDialog open={isReportOpen} onOpenChange={setIsReportOpen} />
+      <DeepDiveCta onDeepDive={handleOpenDeepDive} onOpenReport={openReport} />
 
-        </>
-    );
+      <DeepDive40
+        ref={deepDiveRef}
+        show={showDeepDive}
+        currency={deepDiveForm.currency}
+        revenue={deepDiveForm.revenue}
+        grossMargin={deepDiveForm.grossMargin}
+        netMargin={deepDiveForm.netMargin}
+        globalImpact={deepDiveForm.globalImpact}
+        onDeepDiveResults={handleDeepDiveResults} // use memoized callback
+      />
+
+      <SendReportDialog
+        open={isReportOpen}
+        onOpenChange={setIsReportOpen}
+        revenue={deepDiveForm.revenue}
+        grossMargin={deepDiveForm.grossMargin}
+        netMargin={deepDiveForm.netMargin}
+        globalImpact={deepDiveForm.globalImpact}
+        currency={deepDiveForm.currency}
+        tableOneResults={calculationResults.tableOne}
+        deepDiveResults={calculationResults.deepDive}
+        showDeepDive={showDeepDive}
+      />
+    </>
+  );
 }

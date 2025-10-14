@@ -1,13 +1,13 @@
 "use client";
 
-import React, { forwardRef, useMemo } from "react";
+import React, { forwardRef, useMemo, useEffect } from "react";
 import DeepDiveTables from "@/components/simulator/DeepDiveTables";
 import { calculateResults } from "@/lib/calc/calculateResults";
 import { calculateDeepDive } from "@/lib/calc/calculateDeepDive";
 import { STRATEGIES_12, STRATEGIES_DEEPDIVE } from "@/data/strategies";
 
 const DeepDive40 = forwardRef(function DeepDive40(
-  { show, currency, revenue, grossMargin, netMargin, globalImpact },
+  { show, currency, revenue, grossMargin, netMargin, globalImpact, onDeepDiveResults },
   ref
 ) {
   if (!show) return null;
@@ -37,7 +37,14 @@ const DeepDive40 = forwardRef(function DeepDive40(
         strategies: STRATEGIES_DEEPDIVE,
     }),
     [revenue, tableOneResults.revenueIncrease, grossMargin, netMargin, globalImpact]
-    );
+  );
+
+  // pass results to parent in useEffect
+  useEffect(() => {
+    if (onDeepDiveResults && deepDive) {
+      onDeepDiveResults(deepDive);
+    }
+  }, [deepDive, onDeepDiveResults]);
 
     // Display calculations
     const expectedRevenueIncrease = deepDive.deepDiveRevenueIncrease;
