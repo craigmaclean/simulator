@@ -1,6 +1,8 @@
 import React from "react";
 import VideoPlayer from "@/components/shared/VideoPlayer";
 import CtaButton from "@/components/shared/CtaButton";
+import Link from "next/link";
+import LinkToSection from "../shared/LinkToSection";
 
 export default function Hero() {
     return (
@@ -23,7 +25,9 @@ export default function Hero() {
                     </p>
 
                     <div className="text-center md:text-left">
-                        <CtaButton variant="primary">Run The Simulator</CtaButton>
+                        <LinkToSection href="/#simulator">
+                          <CtaButton variant="primary">Run The Simulator</CtaButton>
+                        </LinkToSection>
                     </div>
 
                     </div>

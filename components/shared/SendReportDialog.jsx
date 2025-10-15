@@ -56,7 +56,7 @@ export default function SendReportDialog({
 
     try {
       const { saveSimulation } = await import('@/lib/db/saveSimulation');
-      const { STRATEGIES_12, STRATEGIES_DEEPDIVE } = await import('@/data/strategies'); // ✅ Import here
+      const { STRATEGIES_12, STRATEGIES_DEEPDIVE } = await import('@/data/strategies'); // Import here
 
       const inputs = {
         revenue: parseFloat(revenue),
@@ -95,10 +95,18 @@ export default function SendReportDialog({
         setSavedSimulationId(result.simulation.id);
         setSubmissionSuccess(true);
         console.log('Simulation saved!', result.simulation.id);
-      } else {
-        alert('Failed to save simulation. Please try again.');
-        console.error('Save error:', result.error);
-      }
+
+        // Fire background job (don't await)
+        fetch('/api/generate-report', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ simulationId: result.simulation.id }),
+        }).catch(err => console.error('Background PDF generation failed:', err));
+          console.log('Simulation saved!', result.simulation.id);
+        } else {
+          alert('Failed to save simulation. Please try again.');
+            console.error('Save error:', result.error);
+        }
 
     } catch (error) {
       console.error('Error in handleSubmit:', error);

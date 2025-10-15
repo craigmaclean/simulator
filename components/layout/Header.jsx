@@ -1,5 +1,6 @@
 import CtaButton from '@/components/shared/CtaButton';
 import Link from 'next/link';
+import LinkToSection from '../shared/LinkToSection';
 
 export default function Header() {
 
@@ -24,14 +25,14 @@ export default function Header() {
                 <img src="/profit-acceleration-logo.png" alt="Profit Acceleration" className="w-auto h-14" />
                 </div>
                 <nav className="items-center hidden space-x-6 md:flex">
-                {/*<a href="/" className="text-base text-gray-600 hover:text-navy">HOME</a>*/}
+                  {/*<a href="/" className="text-base text-gray-600 hover:text-navy">HOME</a>*/}
 
-                <Link href="#jumpstart-12" scroll={false} className="text-base text-gray-600 hover:text-navy">
-                JUMPSTART 12
-                </Link>
-                <Link href="#simulator" scroll={false} className="text-base text-gray-600 hover:text-navy">
-                    <CtaButton variant="primary" className="!px-6 !py-2 !mb-0">Run The Simulator</CtaButton>
-                </Link>
+                  <Link href="#jumpstart-12" scroll={false} className="text-base text-gray-600 hover:text-navy">
+                  JUMPSTART 12
+                  </Link>
+                  <LinkToSection href="/#simulator">
+                      <CtaButton variant="primary" className="!px-6 !py-2 !mb-0">Run The Simulator</CtaButton>
+                  </LinkToSection>
                 </nav>
             </div>
             </div>{/* end .max-w-7xl */}

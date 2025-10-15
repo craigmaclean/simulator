@@ -5,9 +5,10 @@ import DeepDiveTables from "@/components/simulator/DeepDiveTables";
 import { calculateResults } from "@/lib/calc/calculateResults";
 import { calculateDeepDive } from "@/lib/calc/calculateDeepDive";
 import { STRATEGIES_12, STRATEGIES_DEEPDIVE } from "@/data/strategies";
+import CtaButton from "../shared/CtaButton";
 
 const DeepDive40 = forwardRef(function DeepDive40(
-  { show, currency, revenue, grossMargin, netMargin, globalImpact, onDeepDiveResults },
+  { show, currency, revenue, grossMargin, netMargin, globalImpact, onDeepDiveResults, onOpenReport = () => {} },
   ref
 ) {
   if (!show) return null;
@@ -78,7 +79,7 @@ const DeepDive40 = forwardRef(function DeepDive40(
           <DeepDiveTables rows={deepDive.rows} currency={currency} />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 my-8 md:grid-cols-3">
           <SummaryCard
             label="EXPECTED REVENUE INCREASE"
             value={deepDiveRevenueIncrease}
@@ -94,6 +95,16 @@ const DeepDive40 = forwardRef(function DeepDive40(
             value={combinedFiveYearImpact}
             currency={currency}
           />
+        </div>
+
+        <div className="px-4 mx-auto max-w-7xl flex justify-center">
+          <CtaButton
+            onClick={onOpenReport}
+            variant="primary"
+            size="large"
+          >
+            Send Me the Report
+          </CtaButton>
         </div>
       </div>
     </section>

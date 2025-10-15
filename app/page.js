@@ -77,6 +77,7 @@ export default function Home() {
         netMargin={deepDiveForm.netMargin}
         globalImpact={deepDiveForm.globalImpact}
         onDeepDiveResults={handleDeepDiveResults} // use memoized callback
+        onOpenReport={openReport}
       />
 
       <SendReportDialog
