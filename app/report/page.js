@@ -46,15 +46,15 @@ export default function ReportPage() {
               </h2>
               <div className="space-y-4">
                   <p className="leading-relaxed text-gray-600 text-body">
-                  First of all, bookmark this page. You can come back to it at anytime. Your results are customized for you. And if you'd like help with any strategy, click the link to book a meeting.
+                  First of all, bookmark this page. You can come back to it at anytime. Your results are customized for you. And if you&apos;d like help with any strategy, click the link to book a meeting.
                   </p>
 
                   <p className="leading-relaxed text-gray-600 text-body">
-                  The purpose of this roadmap is to give an overview of the path to take in order to create the maximum amount of revenue and profits in your company in the shortest time possible. I'll also show you some (very) short videos along the way to guide your understanding.
+                  The purpose of this roadmap is to give an overview of the path to take in order to create the maximum amount of revenue and profits in your company in the shortest time possible. I&apos;ll also show you some (very) short videos along the way to guide your understanding.
                   </p>
 
                   <p className="leading-relaxed text-gray-600 text-body font-bold">
-                  I'll outline major strategies you should follow and the impact to be made. Click on the strategies below to jump to the step.
+                  I&apos;ll outline major strategies you should follow and the impact to be made. Click on the strategies below to jump to the step.
                   </p>
 
                   <p className="leading-relaxed text-gray-600 text-body italic">
