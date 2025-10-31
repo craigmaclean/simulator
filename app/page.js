@@ -9,6 +9,7 @@ import JumpStart12 from "@/components/sections/JumpStart12";
 import Simulator from "@/components/sections/Simulator";
 import DeepDive40 from "@/components/sections/DeepDive40";
 import SendReportDialog from "@/components/shared/SendReportDialog";
+import Header from "@/components/layout/Header";
 
 export default function Home() {
   const [isReportOpen, setIsReportOpen] = useState(false);
@@ -54,6 +55,8 @@ export default function Home() {
 
   return (
     <>
+      <Header />
+
       <Hero />
 
       <PowerOfCompounding />

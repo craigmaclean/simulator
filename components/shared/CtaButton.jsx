@@ -1,5 +1,5 @@
 const base =
-    "inline-flex items-center justify-center font-semibold uppercase rounded-md transition cursor-pointer mb-4 hover:opacity-[0.95] focus:outline-none";
+    "inline-flex items-center justify-center font-semibold uppercase rounded-md transition-all cursor-pointer mb-4 shadow-md hover:opacity-[0.90] hover:shadow-xl focus:outline-none transition-all";
 
 const variants = {
     primary: "bg-navy text-white",

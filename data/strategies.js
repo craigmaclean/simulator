@@ -8,7 +8,7 @@ export const STRATEGIES_12 = [
     revenueMultiplier: 0.0,
   },
   {
-    id: 'market-position',
+    id: 'market-dominating-position',
     name: 'Market Dominating Position',
     description: 'Stand out from the competition',
     profitMultiplier: 0.5,
