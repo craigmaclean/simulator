@@ -5,6 +5,7 @@ import { STRATEGY_CONTENT } from '@/data/strategyContent';
 import ReportJourney from '@/components/report/ReportJourney';
 import ProfitPotential from '@/components/report/ProfitPotential';
 import JumpStart12 from '@/components/sections/JumpStart12';
+import DownloadReport from '@/components/report/DownloadReport';
 
 export default async function ReportPage({ params }) {
   const { id } = params;
@@ -69,6 +70,8 @@ export default async function ReportPage({ params }) {
           isReversed={index % 2 !== 0}
         />
       ))}
+
+      <DownloadReport />
     </>
   );
 }

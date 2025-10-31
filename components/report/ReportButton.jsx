@@ -9,7 +9,7 @@ export default function ReportButton() {
           <span className="font-semibold">Want Help With This?</span>
           <span className="text-sm font-extralight tracking-widest">Book a Profit Acceleration Session</span>
         </div>
-        <ArrowRight className="h-7 w-7 ml-4" />
+        <ArrowRight className="size-6 ml-4" />
       </div>
     </Button>
   );

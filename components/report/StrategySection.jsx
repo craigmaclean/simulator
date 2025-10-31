@@ -44,7 +44,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
           {/* 4. Video */}
           {videoId && videoHash && (
             <>
-              <div className="flex items-center justify-center text-sm text-white bg-[var(--color-bright-blue)] uppercase tracking-widest text-center p-1.5 mb-">
+              <div className="flex items-center justify-center text-sm text-white bg-[var(--color-bright-blue)] uppercase tracking-widest text-center p-1.5 mb-0">
                 <span>{videoContainerText}</span>
                 <CircleArrowDown className="flex-shrink-0 ml-3 w-5 h-5" />
               </div>
@@ -96,7 +96,10 @@ export default function StrategySection({ strategyData, isReversed = false }) {
           </div>
 
           {/* 6. Button */}
-          <ReportButton />
+          <div className="text-center">
+            <ReportButton />
+          </div>
+
         </div>
 
         {/* Desktop Layout - Two Columns with Alternating */}
