@@ -118,7 +118,7 @@ function SummaryCard({ label, value, currency }) {
   const symbol = symbols[currency] || "$";
   const display = `${symbol}${Math.round(value).toLocaleString("en-US")}`;
   return (
-    <div className="p-6 text-center rounded-lg bg-light-gray">
+    <div className="p-6 text-center rounded-lg bg-light-gray transform transition duration-300 hover:scale-105">
       <h3 className="text-[1rem] font-semibold text-gray-600 mb-2 tracking-tight">
         {label}
       </h3>
