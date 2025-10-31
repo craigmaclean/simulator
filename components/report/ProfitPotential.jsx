@@ -16,12 +16,12 @@ export default function ProfitPotential({ simulation }) {
   };
 
   // Check if deep dive exists and prepare data
-  const hasDeepDive = simulation.deep_dive_results && Object.keys(simulation.deep_dive_results).length > 0;
+  const hasDeepDive = simulation.completed_deep_dive && simulation.deep_dive_profit_increase;
 
   const deepDiveResults = hasDeepDive ? {
     deepDiveRevenueIncrease: simulation.deep_dive_revenue_increase,
-    newAnnualProfit: simulation.newAnnualProfit,
-    deepDiveFiveYearImpact: simulation.deepDiveFiveYear,
+    newAnnualProfit: simulation.currentProfit + simulation.table_one_profit_increase + simulation.deep_dive_profit_increase,
+    deepDiveFiveYearImpact: (simulation.table_one_profit_increase + simulation.deep_dive_profit_increase) * 5,
   } : null;
 
   return (
