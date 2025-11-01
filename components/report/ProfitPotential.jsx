@@ -28,7 +28,7 @@ export default function ProfitPotential({ simulation }) {
     <section id="report-profit-potential" className="py-16 bg-white">
       <div className="px-4 mx-auto max-w-6xl">
         <div className="grid items-center gap-10">
-            <h2 className="mb-6 font-bold text-center text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 text-navy">
+            <h2 className="mb-2 font-bold text-center text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 text-navy">
               Your Customized Profit Potential
             </h2>
 

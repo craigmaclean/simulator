@@ -5,7 +5,7 @@ export default function JumpStart12({ isReportPage }) {
   return (
     <section id="jumpstart-12" className="py-16 bg-light-blue">
       <div className="px-4 mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
+        <div className="mb-8 md:mb-12 text-center">
           <h2 className="mb-4 font-bold text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 text-navy">
           The JumpStart 12 Operating System
           </h2>
@@ -14,7 +14,7 @@ export default function JumpStart12({ isReportPage }) {
           </p>
 
           {isReportPage && (
-            <p className="max-w-2xl mx-auto leading-relaxed text-black text-body font-bold">
+            <p className="max-w-2xl mx-auto leading-snug text-black text-body font-bold">
               Click any strategy below to jump to the action steps.
             </p>
           )}

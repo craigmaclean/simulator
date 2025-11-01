@@ -44,8 +44,8 @@ export default async function ReportPage({ params }) {
     <>
       <section id="report-header" className="py-16">
         <div className="px-4 mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <h1 className="mb-4 font-bold text-h1-mobile md:text-6xl tracking-tight text-navy">
+          <div className="text-center">
+            <h1 className="mb-4 font-bold text-h1-mobile leading-12 md:leading-tight md:text-6xl tracking-tight text-navy">
               Your Profit Acceleration Roadmap
             </h1>
             <p className="max-w-5xl mx-auto leading-relaxed text-gray-600 text-lg">

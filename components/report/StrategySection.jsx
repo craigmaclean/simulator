@@ -15,13 +15,13 @@ export default function StrategySection({ strategyData, isReversed = false }) {
   } = strategyData;
 
   return (
-    <section id={`strategy-${id}`} className={`section-strategy py-20 ${isReversed ? 'bg-light-blue' : ''}`}>
+    <section id={`strategy-${id}`} className={`section-strategy py-10 md:py-20 ${isReversed ? 'bg-light-blue' : ''}`}>
       <div className="px-4 mx-auto max-w-6xl">
 
         {/* Mobile Layout - Single Column with Specific Order */}
         <div className="block md:hidden space-y-6">
           {/* 1. Title */}
-          <h2 className="font-bold text-center text-h2-mobile text-navy">
+          <h2 className="font-bold text-center text-h2-mobile leading-snug text-navy">
             {strategySectionTitle}
           </h2>
 
@@ -69,7 +69,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
           )}
 
           {/* 5. Increases Table */}
-          <div className="max-w-3xl mx-auto border border-gray-300 overflow-hidden">
+          <div className="my-8 md:my-0 max-w-3xl mx-auto border border-gray-300 overflow-hidden">
             <table className="w-full text-center border-collapse uppercase">
               <thead className="bg-gray-200">
                 <tr>
