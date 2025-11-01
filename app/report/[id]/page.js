@@ -72,7 +72,7 @@ export default async function ReportPage({ params }) {
         />
       ))}
 
-      <DownloadReport />
+      <DownloadReport simulation={simulation} />
     </>
   );
 }

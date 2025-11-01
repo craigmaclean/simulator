@@ -1,7 +1,8 @@
 import { Button } from "../ui/button";
 import { ArrowDownToLine, CircleCheck } from 'lucide-react';
+import DownloadReportButton from './DownloadReportButton';
 
-export default function DownloadReport() {
+export default function DownloadReport({ simulation }) {
   return (
     <section id="report-download" className="py-16">
       <div className="px-4 mx-auto max-w-7xl">
@@ -30,14 +31,7 @@ export default function DownloadReport() {
           <p className="max-w-5xl mx-auto leading-relaxed font-bold text-lg mb-10">You've already done the hard part — now it's time to move forward with confidence.</p>
 
           <div className="text-center">
-            <Button className="bg-[var(--color-bright-blue)] rounded-md mb-0 transition-all shadow-sm hover:bg-[var(--color-bright-blue)] hover:opacity-[0.90] hover:shadow-md focus:outline-none text-lg font-semibold uppercase py-8 px-6 w-full sm:w-auto">
-              <div className="flex flex-row items-center justify-center">
-                <div className="flex flex-col border-r border-gray-500 pr-5">
-                  <span className="font-semibold">Download Your JumpStart 12 Report</span>
-                </div>
-                <ArrowDownToLine className="size-6 ml-4" />
-              </div>
-            </Button>
+            <DownloadReportButton simulation={simulation} />
           </div>
 
         </div>
