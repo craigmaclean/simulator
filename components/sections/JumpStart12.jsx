@@ -9,19 +9,23 @@ export default function JumpStart12({ isReportPage }) {
           <h2 className="mb-4 font-bold text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 text-navy">
           The JumpStart 12 Operating System
           </h2>
-          <p className="max-w-2xl mx-auto leading-relaxed text-gray-600 text-body mb-4">
+          <p className="max-w-2xl mx-auto leading-relaxed text-black text-body mb-4">
           We've identified 12 core areas - the JumpStart 12 - that have the biggest impact on a business' bottom line. By focusing on these areas, you can create a powerful operating system to install in your business for sustainable, long-term growth.
           </p>
 
           {isReportPage && (
-            <p className="max-w-2xl mx-auto leading-relaxed text-gray-600 text-body font-bold">
+            <p className="max-w-2xl mx-auto leading-relaxed text-black text-body font-bold">
               Click any strategy below to jump to the action steps.
             </p>
           )}
 
       </div>
 
-      <JumpStartGrid isReportPage={true} />
+      {isReportPage ? (
+        <JumpStartGrid isReportPage={true} enableLinks={true} />
+      ) : (
+        <JumpStartGrid />
+      )}
 
       </div>
     </section>

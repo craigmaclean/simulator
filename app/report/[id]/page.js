@@ -27,12 +27,13 @@ export default async function ReportPage({ params }) {
   const strategiesWithContent = simulation.table_one_strategies.map((strategy) => {
     // Get video/action steps content
     const content = STRATEGY_CONTENT[strategy.id] || {
-      title: strategy.name,
+      cardTitle: strategy.name,
       actionSteps: `Here are your ${strategy.name.toLowerCase()} action steps:`,
       actionStepsList: [],
     };
 
     return {
+      id: strategy.id,
       ...content,
       revenueIncrease: `${((strategy.profit_increase / simulation.annual_revenue) * 100).toFixed(1)}% / ${formatCurrency(strategy.profit_increase)}`,
       profitIncrease: `${((strategy.profit_increase / simulation.currentProfit) * 100).toFixed(1)}% / ${formatCurrency(strategy.profit_increase)}`,
@@ -56,11 +57,11 @@ export default async function ReportPage({ params }) {
         </div>
       </section>
 
-      <ReportJourney  />
+      <ReportJourney />
 
       <ProfitPotential simulation={simulation} />
 
-      <JumpStart12 isReportPage={true} />
+      <JumpStart12 isReportPage={true} enableLinks={true} />
 
       {/* Render all strategies with alternating layouts */}
       {strategiesWithContent.map((strategy, index) => (

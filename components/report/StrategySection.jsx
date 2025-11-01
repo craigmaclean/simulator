@@ -3,7 +3,8 @@ import ReportButton from "./ReportButton";
 
 export default function StrategySection({ strategyData, isReversed = false }) {
   const {
-    title,
+    id,
+    strategySectionTitle,
     actionSteps,
     actionStepsList,
     videoId,
@@ -14,14 +15,14 @@ export default function StrategySection({ strategyData, isReversed = false }) {
   } = strategyData;
 
   return (
-    <section className={`section-strategy py-20 ${isReversed ? 'bg-light-blue' : ''}`}>
+    <section id={`strategy-${id}`} className={`section-strategy py-20 ${isReversed ? 'bg-light-blue' : ''}`}>
       <div className="px-4 mx-auto max-w-6xl">
 
         {/* Mobile Layout - Single Column with Specific Order */}
         <div className="block md:hidden space-y-6">
           {/* 1. Title */}
           <h2 className="font-bold text-center text-h2-mobile text-navy">
-            {title}
+            {strategySectionTitle}
           </h2>
 
           {/* 2. Action Steps Text */}
@@ -61,7 +62,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     width: "100%",
                     height: "100%"
                   }}
-                  title={title}
+                  title={strategySectionTitle}
                 />
               </div>
             </>
@@ -127,7 +128,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                           width: "100%",
                           height: "100%"
                         }}
-                        title={title}
+                        title={strategySectionTitle}
                       />
                     </div>
                   </>
@@ -164,7 +165,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
               {/* Content Column */}
               <div className="min-w-0">
                 <h2 className="mb-6 font-bold text-center md:text-left text-h2-mobile md:text-5xl tracking-tight leading-h2 text-navy">
-                  {title}
+                  {strategySectionTitle}
                 </h2>
 
                 <div className="space-y-4">
@@ -192,7 +193,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
               {/* Content Column */}
               <div className="min-w-0">
                 <h2 className="mb-6 font-bold text-center md:text-left text-h2-mobile md:text-5xl tracking-tight leading-h2 text-navy">
-                  {title}
+                  {strategySectionTitle}
                 </h2>
 
                 <div className="space-y-4">
@@ -236,7 +237,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                           width: "100%",
                           height: "100%"
                         }}
-                        title={title}
+                        title={strategySectionTitle}
                       />
                     </div>
                   </>

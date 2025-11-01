@@ -1,6 +1,9 @@
 export const STRATEGY_CONTENT = {
   'cut-costs': {
-    title: 'Cut Costs',
+    id: 'cut-costs',
+    cardTitle: 'Cut Costs',
+    strategySectionTitle: 'Cut Costs',
+    description: 'Reduce unnecessary expenses & improve efficiency.',
     actionSteps: 'Here are your cost cutting action steps:',
     actionStepsList: [
       "Review the Video for Important Reasons Why Cutting Costs is Your Key to Increased Profits",
@@ -15,7 +18,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Cutting Costs',
   },
   'market-dominating-position': {
-    title: 'Market Dominating Position (MDP)',
+    id: 'market-dominating-position',
+    cardTitle: 'Market-Dominating Position',
+    strategySectionTitle: 'Market Dominating Position (MDP)',
+    description: 'Stand out from the competition & become the obvious choice for your ideal customers.',
     actionSteps: 'Here are your MDP action steps:',
     actionStepsList: [
       "Watch this video on the power of a market-dominating position",
@@ -31,7 +37,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About MDP',
   },
   'compelling-offer': {
-    title: 'Create a More Compelling Offer',
+    id: 'compelling-offer',
+    cardTitle: 'Compelling Offer',
+    strategySectionTitle: 'Create a More Compelling Offer',
+    description: 'Craft offers that resonate strongly with your audience.',
     actionSteps: 'Here are your compelling offer action steps:',
     actionStepsList: [
       "Discover new possibilities of more compelling offers",
@@ -46,7 +55,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Compelling Offers',
   },
   'increase-prices': {
-    title: 'Increase Prices',
+    id: 'increase-prices',
+    cardTitle: 'Increase Prices',
+    strategySectionTitle: 'Increase Prices',
+    description: 'Maximize your profitability by strategically adjusting your pricing structure.',
     actionSteps: 'Here are your action steps for increasing your prices:',
     actionStepsList: [
       "Review the video on the immediate benefits of increasing prices",
@@ -62,7 +74,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Increasing Prices',
   },
   'upsell-cross-sell': {
-    title: 'Create Upsells & Cross-Sells',
+    id: 'upsell-cross-sell',
+    cardTitle: 'Upsell & Cross-Sell',
+    strategySectionTitle: 'Create Upsells & Cross-Sells',
+    description: 'Leverage relevant add-ons & complementary offers to improve the value of each customer.',
     actionSteps: 'Here are your upsell & cross-sell action steps:',
     actionStepsList: [
       "Understand the power of Upsells & Cross-sells for Your Business",
@@ -79,7 +94,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Upsells & Cross-Sells',
   },
   'bundling': {
-    title: 'Create Bundling Options',
+    id: 'bundling',
+    cardTitle: 'Bundling',
+    strategySectionTitle: 'Create Bundling Options',
+    description: 'Package your products or services to increase perceived value that encourages larger purchases.',
     actionSteps: 'Here are your bundling action steps:',
     actionStepsList: [
       "Review the importance and impact of the bundling strategy",
@@ -95,7 +113,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Bundling Options',
   },
   'downsell': {
-    title: 'Plan Your Downsells',
+    id: 'downsell',
+    cardTitle: 'Downsell',
+    strategySectionTitle: 'Plan Your Downsells',
+    description: 'Avoid losing price-sensitive customers by offering lower-priced alternatives.',
     actionSteps: 'Here are your downselling action steps:',
     actionStepsList: [
       "Review the video on the power of a downsell strategy",
@@ -113,7 +134,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Planning Downsells',
   },
   'additional-products': {
-    title: 'Sell Additional Products & Services',
+    id: 'additional-products',
+    cardTitle: 'Additional Products & Services',
+    strategySectionTitle: 'Sell Additional Products & Services',
+    description: 'Solve more problems for your existing customers & increase their LTV by expanding what you sell',
     actionSteps: 'Here are your additional products & services action steps:',
     actionStepsList: [
       "Learn how additional products & services could impact profits",
@@ -129,7 +153,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Selling Additional Products & Services',
   },
   'drip-campaign': {
-    title: 'Leverage Drip Campaigns',
+    id: 'drip-campaign',
+    cardTitle: 'Drip Campaign',
+    strategySectionTitle: 'Leverage Drip Campaigns',
+    description: "Nurture leads through regular, consistent communication to keep your business top-of-mind when they're ready to purchase.",
     actionSteps: 'Here are your drip campaign action steps:',
     actionStepsList: [
       "Review the reasons in the video why a drip campaign is critical",
@@ -145,7 +172,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Drip Campaigns',
   },
   'alliances-joint-ventures': {
-    title: 'Form Alliances & Joint Ventures',
+    id: 'alliances-joint-ventures',
+    cardTitle: 'Alliances & Joint Ventures',
+    strategySectionTitle: 'Form Alliances & Joint Ventures',
+    description: 'Partnering with other businesses can be a powerful way to reach a new audience.',
     actionSteps: 'Here are your alliance & JV action steps:',
     actionStepsList: [
       "Watch the power of forming alliances & joint ventures video",
@@ -161,7 +191,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Alliances & Joint Ventures',
   },
   'more-leads': {
-    title: 'Get More Leads',
+    id: 'more-leads',
+    cardTitle: 'More Leads',
+    strategySectionTitle: 'Get More Leads',
+    description: 'Consistently generate a flow of qualified leads.',
     actionSteps: 'Here are your action steps to help generate more leads:',
     actionStepsList: [
       "Review the video for important insights into lead generation",
@@ -178,7 +211,10 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Getting More Leads',
   },
   'digital-marketing': {
-    title: 'Digital Marketing Campaign',
+    id: 'digital-marketing',
+    cardTitle: 'Digital Marketing',
+    strategySectionTitle: 'Digital Marketing Campaign',
+    description: 'Leverage online channels to scale visibility & reach.',
     actionSteps: 'Here are your digital marketing campaign action steps:',
     actionStepsList: [
       "Review the video for important insights into digital marketing",
@@ -193,3 +229,6 @@ export const STRATEGY_CONTENT = {
     videoContainerText: 'Learn About Digital Marketing Campaigns',
   },
 };
+
+// Helper to get strategies as array for grid display
+export const STRATEGIES_ARRAY = Object.values(STRATEGY_CONTENT);
