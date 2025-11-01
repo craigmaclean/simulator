@@ -16,23 +16,24 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginBottom: 10,
     textAlign: 'center',
-    color: '#1e3a8a', // navy
+    color: '#000321', // navy
   },
 
   // Journey Section
   journeySection: {
-    backgroundColor: '#dbeafe', // light-blue
+    backgroundColor: '#f4f6ff', // light-blue
     padding: 20,
-    marginBottom: 30,
+    marginBottom: 10,
     borderRadius: 8,
   },
   journeyTitle: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: '#1e3a8a',
+    color: '#000321',
     marginBottom: 12,
+    textAlign: 'center'
   },
   journeyText: {
     fontSize: 11,
@@ -57,10 +58,10 @@ const styles = StyleSheet.create({
 
   // Profit Potential
   profitPotentialTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#1e3a8a',
+    color: '#000321',
     marginBottom: 20,
     marginTop: 20,
   },
@@ -78,26 +79,47 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     textAlign: 'center',
   },
+  summaryCardDeepDive: {
+    flex: 1,
+    backgroundColor: '#1a3282',
+    padding: 16,
+    borderRadius: 8,
+    textAlign: 'center',
+  },
   summaryLabel: {
-    fontSize: 9,
-    color: '#6b7280',
+    fontSize: 8,
+    color: '#394554',
     marginBottom: 8,
     textTransform: 'uppercase',
-    fontWeight: 'semibold',
+    fontWeight: 'normal',
+    letterSpacing: 0.5,
+  },
+  summaryLabelDeepDive: {
+    fontSize: 8,
+    color: '#ffffff',
+    marginBottom: 8,
+    textTransform: 'uppercase',
+    fontWeight: 'normal',
     letterSpacing: 0.5,
   },
   summaryValue: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1e3a8a',
+    fontWeight: 'normal',
+    color: '#000321',
+  },
+  summaryValueDeepDive: {
+    fontSize: 18,
+    fontWeight: 'normal',
+    color: '#ffffff',
   },
 
   // Deep Dive Section
   deepDiveTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontWeight: 'semibold',
     textAlign: 'center',
-    color: '#1e3a8a',
+    color: '#000321',
+    textTransform: 'uppercase',
     marginTop: 24,
     marginBottom: 16,
   },
@@ -110,7 +132,7 @@ const styles = StyleSheet.create({
   strategySectionAlt: {
     marginTop: 30,
     marginBottom: 30,
-    backgroundColor: '#dbeafe',
+    backgroundColor: '#f4f6ff',
     padding: 20,
     borderRadius: 8,
   },
@@ -248,8 +270,8 @@ export default function ReportPDF({ simulation }) {
         {/* Header */}
         <Text style={styles.header}>Your Profit Acceleration Roadmap</Text>
 
-        <Text style={{ fontSize: 11, textAlign: 'center', color: '#6b7280', marginBottom: 30 }}>
-          Prepared for: {simulation.first_name} {simulation.last_name} | {new Date().toLocaleDateString()}
+        <Text style={{ fontSize: 11, textAlign: 'center', color: '#4b5563', marginBottom: 10 }}>
+          Prepared for: {simulation.first_name} {simulation.last_name}
         </Text>
 
         {/* Journey Section */}
@@ -257,18 +279,15 @@ export default function ReportPDF({ simulation }) {
           <Text style={styles.journeyTitle}>Your Journey to Profit Acceleration!</Text>
 
           <Text style={styles.journeyText}>
-            First of all, bookmark this page. You can come back to it at anytime. Your results are customized for you.
-            And if you'd like help with any strategy, click the link to book a meeting.
+            First of all, your results are customized, just for you. If you'd like help with any strategy, the bottom of this roadmap will contain a link to book a strategy session with me.
           </Text>
 
           <Text style={styles.journeyText}>
-            The purpose of this roadmap is to give an overview of the path to take in order to create the maximum amount
-            of revenue and profits in your company in the shortest time possible. I'll also show you some (very) short
-            videos along the way to guide your understanding.
+            The purpose of this roadmap is to give an overview of the path to take in order to create the maximum amount of revenue and profits in your company in the shortest time possible. You can always refer to the report page to watch the videos, which will help guide your understanding on each strategy.
           </Text>
 
           <Text style={styles.journeyTextBold}>
-            I'll outline major strategies you should follow and the impact to be made. Click on the strategies below to jump to the step.
+            I'll outline the major strategies you should follow and the impact to be made.
           </Text>
 
           <Text style={styles.journeySignature}>
@@ -317,19 +336,19 @@ export default function ReportPDF({ simulation }) {
             <Text style={styles.deepDiveTitle}>With Deep Dive 40 Strategies</Text>
 
             <View style={styles.summaryRow}>
-              <View style={styles.summaryCard}>
-                <Text style={styles.summaryLabel}>Expected DD40 Revenue Increase</Text>
-                <Text style={styles.summaryValue}>{formatCurrency(simulation.deep_dive_revenue_increase)}</Text>
+              <View style={styles.summaryCardDeepDive}>
+                <Text style={styles.summaryLabelDeepDive}>Expected DD40 Revenue Increase</Text>
+                <Text style={styles.summaryValueDeepDive}>{formatCurrency(simulation.deep_dive_revenue_increase)}</Text>
               </View>
-              <View style={styles.summaryCard}>
-                <Text style={styles.summaryLabel}>Expected DD40 Annual Profit</Text>
-                <Text style={styles.summaryValue}>
+              <View style={styles.summaryCardDeepDive}>
+                <Text style={styles.summaryLabelDeepDive}>Expected DD40 Annual Profit</Text>
+                <Text style={styles.summaryValueDeepDive}>
                   {formatCurrency(simulation.currentProfit + simulation.table_one_profit_increase + simulation.deep_dive_profit_increase)}
                 </Text>
               </View>
-              <View style={styles.summaryCard}>
-                <Text style={styles.summaryLabel}>Expected DD40 5-Year Profit Impact</Text>
-                <Text style={styles.summaryValue}>
+              <View style={styles.summaryCardDeepDive}>
+                <Text style={styles.summaryLabelDeepDive}>Expected DD40 5-Year Profit Impact</Text>
+                <Text style={styles.summaryValueDeepDive}>
                   {formatCurrency((simulation.table_one_profit_increase + simulation.deep_dive_profit_increase) * 5)}
                 </Text>
               </View>
@@ -338,7 +357,7 @@ export default function ReportPDF({ simulation }) {
         )}
 
         <Text style={styles.footer}>
-          © {new Date().getFullYear()} Profit Acceleration Software | profitaccelerationsoftware.com
+          © {new Date().getFullYear()} Profit Acceleration Software™ | profitaccelerationsoftware.com
         </Text>
       </Page>
 
@@ -383,7 +402,7 @@ export default function ReportPDF({ simulation }) {
           </View>
 
           <Text style={styles.footer}>
-            © {new Date().getFullYear()} Profit Acceleration Software | Page {index + 2} of {strategiesWithContent.length + 1}
+            © {new Date().getFullYear()} Profit Acceleration Software™ | Page {index + 2} of {strategiesWithContent.length + 1}
           </Text>
         </Page>
       ))}
