@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function ReportJourney() {
   return (
-    <section id="report-journey" className="py-16 bg-light-gunmetal">
+    <section id="report-journey" className="py-16 bg-light-blue">
       <div className="px-4 mx-auto max-w-6xl">
         <div className="grid items-center gap-10 md:grid-cols-[3fr_1fr]">
           <div className="order-1">

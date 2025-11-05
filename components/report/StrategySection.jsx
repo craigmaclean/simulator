@@ -15,7 +15,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
   } = strategyData;
 
   return (
-    <section id={`strategy-${id}`} className={`section-strategy py-10 md:py-20 ${isReversed ? 'bg-light-gunmetal' : ''}`}>
+    <section id={`strategy-${id}`} className={`section-strategy py-10 md:py-20 ${isReversed ? 'bg-light-blue' : ''}`}>
       <div className="px-4 mx-auto max-w-6xl">
 
         {/* Mobile Layout - Single Column with Specific Order */}
@@ -35,7 +35,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
             <ul className="space-y-3 mb-7 mt-5">
               {actionStepsList.map((item, index) => (
                 <li key={index} className="flex items-start gap-3 mb-4">
-                  <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-medium-gunmetal)] text-white mt-1" />
+                  <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -177,7 +177,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     <ul className="space-y-3 mb-7 mt-5">
                       {actionStepsList.map((item, index) => (
                         <li key={index} className="flex items-start gap-3 mb-4">
-                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-medium-gunmetal)] text-white mt-1" />
+                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -205,7 +205,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     <ul className="space-y-3 mb-7 mt-5">
                       {actionStepsList.map((item, index) => (
                         <li key={index} className="flex items-start gap-3 mb-4">
-                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-medium-gunmetal)] text-white mt-1" />
+                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
                           <span>{item}</span>
                         </li>
                       ))}

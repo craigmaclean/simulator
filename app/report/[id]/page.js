@@ -65,7 +65,7 @@ export default async function ReportPage({ params }) {
               <div className="order-1 md:order-2 space-y-4">
                 <p className="leading-relaxed text-gray-800 text-lg text-left">Thank you for providing the information needed to create your personalized Profit Acceleration Roadmap. Based on your input, the first twelve improvement areas highlight several opportunities to strengthen your business performance.</p>
 
-                <p className="leading-relaxed text-gray-800 text-lg text-left">Below, you'll find recommended action steps designed to help you implement strategic changes and work toward the projected profit impact of {' '} <strong>{formatCurrency(simulation.totalProfitIncrease)}</strong>. These steps can help you improve efficiencies, optimize operations, and support sustainable growth.</p>
+                <p className="leading-relaxed text-gray-800 text-lg text-left">Below, you&apos;ll find recommended action steps designed to help you implement strategic changes and work toward the projected profit impact of {' '} <strong>{formatCurrency(simulation.totalProfitIncrease)}</strong>. These steps can help you improve efficiencies, optimize operations, and support sustainable growth.</p>
               </div>
             </div>
 
