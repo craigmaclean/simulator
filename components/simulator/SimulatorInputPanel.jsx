@@ -40,7 +40,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 mb-8">
       <div className="lg:col-span-2">
-        <Label className="block text-sm font-semibold text-gray-700 mb-2">Select Currency</Label>
+        <Label className="block text-sm font-semibold text-gray-800 mb-2">Select Currency</Label>
         <Select
             value={
             CURRENCIES.some(c => c.code === formData.currency)
@@ -63,7 +63,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
       </div>
 
       <div className="lg:col-span-4">
-        <Label htmlFor="revenue" className="block text-sm font-semibold text-gray-700 mb-2">
+        <Label htmlFor="revenue" className="block text-sm font-semibold text-gray-800 mb-2">
             Annual Revenue
         </Label>
         <Input
@@ -78,7 +78,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
       </div>
 
       <div className="lg:col-span-3">
-        <Label htmlFor="grossMargin" className="block text-sm font-semibold text-gray-700 mb-2">
+        <Label htmlFor="grossMargin" className="block text-sm font-semibold text-gray-800 mb-2">
             Gross Profit Margin (%)
         </Label>
         <Input
@@ -95,7 +95,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
       </div>
 
       <div className="lg:col-span-3">
-        <Label htmlFor="netMargin" className="block text-sm font-semibold text-gray-700 mb-2">
+        <Label htmlFor="netMargin" className="block text-sm font-semibold text-gray-800 mb-2">
             Net Profit Margin (%)
         </Label>
         <Input

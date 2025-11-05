@@ -11,7 +11,7 @@ export default function DeepDiveTable({ rows, currency }) {
     <div className="overflow-x-auto">
       <table className="w-full">
         <thead>
-          <tr className="bg-navy text-white">
+          <tr className="bg-gunmetal text-white">
             <th className="px-4 py-3 text-left">AREA</th>
             <th className="px-4 py-3 text-right">PROFIT INCREASE</th>
           </tr>
@@ -24,8 +24,8 @@ export default function DeepDiveTable({ rows, currency }) {
 
             return (
               <tr key={row.id} className={isEven ? "bg-white" : "bg-gray-50"}>
-                <td className="px-4 py-2 border-b">{row.name}</td>
-                <td className="px-4 py-2 border-b text-right">
+                <td className="px-4 py-2 border-b text-gray-800">{row.name}</td>
+                <td className="px-4 py-2 border-b text-right text-gray-800">
                   {display}
                 </td>
               </tr>

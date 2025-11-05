@@ -122,7 +122,7 @@ function SummaryCard({ label, value, currency }) {
       <h3 className="text-[1rem] font-semibold text-gray-600 mb-2 tracking-tight">
         {label}
       </h3>
-      <p className="text-[2rem] font-semibold text-navy tracking-wide">
+      <p className="text-[2rem] font-semibold text-gray-900 tracking-wide">
         {display}
       </p>
     </div>

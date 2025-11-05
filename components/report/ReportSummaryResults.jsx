@@ -34,7 +34,7 @@ export default function ReportSummaryResults({ tableOneResults, deepDiveResults,
       {deepDiveResults && (
         <div className="space-y-4 text-center mt-12">
           {/* Headline */}
-          <h3 className="text-2xl font-bold text-center text-navy px-8 uppercase tracking-widest">
+          <h3 className="text-2xl font-bold text-center text-gray-900 px-8 uppercase tracking-widest">
             Deep Dive 40 Results
           </h3>
 

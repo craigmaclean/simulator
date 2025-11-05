@@ -37,7 +37,7 @@ export default function DownloadReportButton({ simulation }) {
     <Button
       onClick={handleDownload}
       disabled={isGenerating}
-      className="bg-[var(--color-bright-blue)] rounded-md mb-0 transition-all shadow-sm hover:bg-[var(--color-bright-blue)] hover:opacity-[0.90] hover:shadow-md focus:outline-none text-lg font-semibold uppercase py-8 px-6 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+      className="bg-[var(--color-gunmetal)] rounded-md mb-4 shadow-md hover:bg-[var(--color-gunmetal)] hover:opacity-[0.90] hover:shadow-xl text-lg font-semibold uppercase py-8 px-6 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <div className="flex flex-row items-center justify-center">
         <div className="flex flex-col border-r border-gray-500 pr-5">

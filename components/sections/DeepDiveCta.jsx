@@ -5,7 +5,7 @@ export default function DeepDiveCta({
                                     onOpenReport = () => {}, // default to a no-op to avoid “onClick=false”
                                     }) {
   return (
-    <section id="cta" className="py-16 bg-navy">
+    <section id="cta" className="py-16 bg-gunmetal">
       <div className="px-4 mx-auto text-center max-w-7xl">
         <h2 className="mb-6 font-bold text-white text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2">
           Ready to Accelerate Your Growth?

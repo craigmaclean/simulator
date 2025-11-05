@@ -86,7 +86,7 @@ export default function Simulator({ onFormSnapshot, onCalculationResults, onOpen
   return (
     <section id="simulator" className="py-16">
       <div className="px-4 mx-auto max-w-7xl">
-        <h2 className="mb-0 font-bold text-center leading-h2 text-h2-mobile md:text-h2-tablet lg:text-h2 text-navy md:mb-12">
+        <h2 className="mb-0 font-bold text-center leading-h2 text-h2-mobile md:text-h2-tablet lg:text-h2 text-gray-900 md:mb-12">
           Profit Acceleration Simulator
         </h2>
 

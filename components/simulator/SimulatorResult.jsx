@@ -4,7 +4,7 @@ export default function SimulatorResult({ label, value, isDeepDiveResult }) {
   return (
     <>
     {isDeepDiveResult ? (
-      <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-6 text-center transform transition duration-300 hover:scale-105">
+      <div className="bg-gradient-to-br from-slate-800 to-slate-600 rounded-lg p-6 text-center transform transition duration-300 hover:scale-105">
         <h3 className="text-[1rem] font-semibold text-white mb-2 tracking-tight">
           {label}
         </h3>
@@ -17,7 +17,7 @@ export default function SimulatorResult({ label, value, isDeepDiveResult }) {
         <h3 className="text-[1rem] font-semibold text-gray-600 mb-2 tracking-tight">
           {label}
         </h3>
-        <p className="text-[2rem] font-semibold text-navy tracking-wide">
+        <p className="text-[2rem] font-semibold text-gray-900 tracking-wide">
           {value}
         </p>
       </div>

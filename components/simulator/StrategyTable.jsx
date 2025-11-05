@@ -29,7 +29,7 @@ export default function StrategyTable({
     <div className="overflow-x-auto">
       <Table className="w-full table-fixed">
         <TableHeader>
-            <TableRow className="bg-navy hover:bg-navy">
+            <TableRow className="bg-gunmetal hover:bg-gunmetal">
             <TableHead className="px-2 py-3 text-xs text-left text-white text-wrap sm:text-base sm:px-4 w-[40%] sm:w-auto">
                 AREA
             </TableHead>
@@ -66,7 +66,7 @@ export default function StrategyTable({
 
             return (
                 <TableRow key={actualIndex} className={zebra}>
-                <TableCell className="px-2 py-2 text-sm leading-tight break-words border-b sm:text-base sm:px-4" style={{ textWrap: "auto" }}>{strategy.name}</TableCell>
+                <TableCell className="text-gray-800 px-2 py-2 text-sm leading-tight break-words border-b sm:text-base sm:px-4" style={{ textWrap: "auto" }}>{strategy.name}</TableCell>
 
                 <TableCell className="px-2 py-2 border-b sm:px-4">
                     <div className="flex items-center justify-center gap-1">
@@ -87,7 +87,7 @@ export default function StrategyTable({
                     </div>
                 </TableCell>
 
-                <TableCell className="px-2 py-2 text-sm text-right border-b sm:px-4 sm:text-base whitespace-nowrap">
+                <TableCell className="text-gray-800 px-2 py-2 text-sm text-right border-b sm:px-4 sm:text-base whitespace-nowrap">
                     {formatCurrency(strategy.profitIncrease || 0, currency)}
                 </TableCell>
                 </TableRow>

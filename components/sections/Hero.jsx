@@ -10,17 +10,17 @@ export default function Hero() {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
             <img src="./AdobeStock_186301146.jpeg" alt="" className="object-cover w-full h-full" />
-            <div className="absolute inset-0 bg-light-blue opacity-30" />
+            <div className="absolute inset-0 bg-light-gunmetal opacity-30" />
             </div>
             {/* Content */}
             <div className="relative z-10 px-4 mx-auto max-w-7xl">
                 <div className="grid items-center gap-12 md:grid-cols-2">
                     {/* Left Column */}
                     <div>
-                    <h1 className="mb-6 font-bold text-center md:text-left text-h1-mobile md:text-h1-tablet lg:text-h1 leading-h1 text-navy">
+                    <h1 className="mb-6 font-bold text-center md:text-left text-h1-mobile md:text-h1-tablet lg:text-h1 leading-h1 text-gray-900">
                         Unlock the Power of Compounding Growth in Your Business
                     </h1>
-                    <p className="mb-8 leading-relaxed text-gray-600 text-body">
+                    <p className="mb-8 leading-relaxed text-gray-800 text-body">
                         As a business owner, the key to unlocking exponential profitability isn't a single, massive change. It's the power of small, consistent improvements compounded over time. Our Profit Acceleration Simulator™ shows you how.
                     </p>
 

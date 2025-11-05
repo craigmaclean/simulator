@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getSimulation } from '@/lib/db/saveSimulation';
 import { notFound } from 'next/navigation';
 import StrategySection from '@/components/report/StrategySection';
@@ -45,14 +46,29 @@ export default async function ReportPage({ params }) {
       <section id="report-header" className="py-16">
         <div className="px-4 mx-auto max-w-7xl">
           <div className="text-center">
-            <h1 className="mb-4 font-bold text-h1-mobile leading-12 md:leading-tight md:text-6xl tracking-tight text-navy">
+            <h1 className="mb-4 font-bold text-h1-mobile leading-12 md:leading-tight md:text-6xl tracking-tight text-gray-900">
               Your Profit Acceleration Roadmap
             </h1>
-            <p className="max-w-5xl mx-auto leading-relaxed text-gray-600 text-lg">
-              Thank you for your input to help me create this Profit Acceleration Roadmap for you.
-              Below are some action steps you can take to implement the necessary changes so you can hit that{' '}
-              <strong>{formatCurrency(simulation.totalProfitIncrease)}</strong> profit impact over the first 12 areas.
-            </p>
+
+            <div className="grid items-center gap-10 md:grid-cols-[1fr_3fr]">
+              <div className="order-2 md:order-1">
+                <Image
+                  src="/roadmap.webp"
+                  alt="Your Profit Acceleration Roadmap"
+                  width={1200}
+                  height={1552}
+                  className="w-full rounded-lg"
+                  layout="responsive"
+                />
+              </div>
+
+              <div className="order-1 md:order-2 space-y-4">
+                <p className="leading-relaxed text-gray-800 text-lg text-left">Thank you for providing the information needed to create your personalized Profit Acceleration Roadmap. Based on your input, the first twelve improvement areas highlight several opportunities to strengthen your business performance.</p>
+
+                <p className="leading-relaxed text-gray-800 text-lg text-left">Below, you'll find recommended action steps designed to help you implement strategic changes and work toward the projected profit impact of {' '} <strong>{formatCurrency(simulation.totalProfitIncrease)}</strong>. These steps can help you improve efficiencies, optimize operations, and support sustainable growth.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

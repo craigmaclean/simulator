@@ -19,7 +19,7 @@ export default function ImpactSlider({
 
   return (
     <div className="py-6">
-      <h3 id={`${id}-label`} className="text-lg font-semibold text-navy text-center mb-4">
+      <h3 id={`${id}-label`} className="text-lg font-semibold text-gray-800 text-center mb-4">
         {label}
       </h3>
 
@@ -43,7 +43,7 @@ export default function ImpactSlider({
           />
         </div>
 
-        <span className="text-2xl font-semibold text-navy min-w-[60px]">
+        <span className="text-2xl font-semibold text-gray-800 min-w-[60px]">
           {v.toFixed(1)}%
         </span>
       </div>
