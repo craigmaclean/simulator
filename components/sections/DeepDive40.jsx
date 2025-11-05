@@ -81,17 +81,17 @@ const DeepDive40 = forwardRef(function DeepDive40(
 
         <div className="grid grid-cols-1 gap-6 my-8 md:grid-cols-3">
           <SummaryCard
-            label="EXPECTED REVENUE INCREASE"
+            label="PROJECTED DD40 REVENUE INCREASE"
             value={deepDiveRevenueIncrease}
             currency={currency}
           />
           <SummaryCard
-            label="NEW ANNUAL PROFIT"
+            label="PROJECTED DD40 ANNUAL PROFIT"
             value={tableOneResults.currentProfit + combinedProfitIncrease}
             currency={currency}
           />
           <SummaryCard
-            label="EXPECTED 5-YEAR NET PROFIT IMPACT"
+            label="PROJECTED DD40 5-YEAR PROFIT IMPACT"
             value={combinedFiveYearImpact}
             currency={currency}
           />

@@ -7,18 +7,18 @@ export default function ReportSummaryResults({ tableOneResults, deepDiveResults,
   // First two rows (always shown)
   const tableOneItems = [
     { label: 'CURRENT REVENUE', value: formatCurrency(tableOneResults.currentRevenue, currency) },
-    { label: 'CURRENT PROFIT', value: formatCurrency(tableOneResults.currentProfit, currency) },
-    { label: 'EXPECTED REVENUE INCREASE', value: formatCurrency(tableOneResults.revenueIncrease, currency) },
-    { label: 'EXPECTED ANNUAL GROSS REVENUE', value: formatCurrency(tableOneResults.grossRevenueIncrease, currency) },
-    { label: 'EXPECTED NET PROFIT INCREASE', value: formatCurrency(tableOneResults.netProfitIncrease, currency) },
-    { label: 'EXPECTED 5-YEAR NET PROFIT IMPACT', value: formatCurrency(tableOneResults.fiveYearImpact, currency) }
+    { label: 'PROJECTED REVENUE INCREASE', value: formatCurrency(tableOneResults.revenueIncrease, currency) },
+    { label: 'PROJECTED 5-YEAR REVENUE INCREASE', value: formatCurrency(tableOneResults.revenueIncrease * 5, currency) },
+    { label: 'CURRENT NET PROFIT', value: formatCurrency(tableOneResults.currentProfit, currency) },
+    { label: 'PROJECTED PROFIT INCREASE', value: formatCurrency(tableOneResults.netProfitIncrease, currency) },
+    { label: 'PROJECTED 5-YEAR NET PROFIT INCREASE', value: formatCurrency(tableOneResults.fiveYearImpact, currency) }
   ];
 
   // Third row (only if deep dive exists)
   const deepDiveItems = deepDiveResults ? [
-    { label: 'EXPECTED DD40 REVENUE INCREASE', value: formatCurrency(deepDiveResults.deepDiveRevenueIncrease, currency) },
-    { label: 'EXPECTED DD40 ANNUAL PROFIT', value: formatCurrency(deepDiveResults.newAnnualProfit, currency) },
-    { label: 'EXPECTED DD40 5-YEAR PROFIT IMPACT', value: formatCurrency(deepDiveResults.deepDiveFiveYearImpact, currency) }
+    { label: 'PROJECTED DD40 REVENUE INCREASE', value: formatCurrency(deepDiveResults.deepDiveRevenueIncrease, currency) },
+    { label: 'PROJECTED DD40 ANNUAL PROFIT', value: formatCurrency(deepDiveResults.newAnnualProfit, currency) },
+    { label: 'PROJECTED DD40 5-YEAR PROFIT IMPACT', value: formatCurrency(deepDiveResults.deepDiveFiveYearImpact, currency) }
   ] : [];
 
   return (
