@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Profit Acceleration Simulator
 
-## Getting Started
+A comprehensive business profit acceleration platform that helps companies identify and quantify growth opportunities across 12+ proven strategies. Built with Next.js, this application provides personalized financial projections and actionable roadmaps for business growth.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Interactive Business Simulator** - Input revenue, profit margins, and currency to generate custom projections
+- **12 Core Growth Strategies** - Analyze impact across areas like pricing optimization, cost reduction, upselling, and market positioning
+- **Deep Dive Analysis (DD40)** - Extended analysis with 28 additional growth strategies for comprehensive planning
+- **Multi-Currency Support** - Full support for 47+ global currencies with proper localization
+- **Professional PDF Reports** - Generate downloadable profit acceleration roadmaps with custom branding
+- **Responsive Design** - Optimized for desktop, tablet, and mobile devices
+- **Real-time Calculations** - Instant financial projections with precision-focused rounding algorithms
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS v4 with custom design tokens
+- **UI Components**: shadcn/ui component library
+- **Icons**: Lucide React
+- **PDF Generation**: @react-pdf/renderer
+- **Database**: Supabase
+- **Deployment**: [Your deployment platform]
+
+## 📊 Screenshots
+
+### Business Simulator
+![Business Simulator Interface](screenshots/simulator-interface.png)
+
+*Interactive form for inputting business metrics and growth parameters*
+
+### Strategy Analysis
+![Strategy Analysis Dashboard](screenshots/simulator-strategy-analysis.png)
+
+*Visual breakdown of profit impact across different growth strategies*
+
+### PDF Report Generation
+![Generated PDF Report](screenshots/simulator-pdf-report.png)
+
+*Professional PDF roadmap with custom calculations and actionable steps*
+
+### Mobile Experience
+![Mobile Responsive Design](screenshots/simulator-mobile.png)
+
+*Fully responsive design optimized for mobile devices*
+
+## 🎯 Key Calculations
+
+The application uses sophisticated financial algorithms to ensure accuracy:
+
+- **Precision-First Approach**: Calculations maintain full decimal precision, rounding only at display time
+- **Compound Growth Modeling**: Revenue increases compound on cumulative totals for realistic projections
+- **Strategy-Specific Logic**: Different calculation methods for pricing, cost reduction, and revenue strategies
+- **Multi-Year Projections**: 5-year impact calculations for long-term planning
+
+## 🌍 Multi-Currency Support
+
+Supports 47 global currencies including:
+- Major currencies (USD, EUR, GBP, CAD, AUD)
+- Regional currencies (INR, CNY, JPY, KRW, etc.)
+- Emerging market currencies (NGN, KES, BDT, etc.)
+
+## 📁 Project Structure
+
+```
+├── app/                    # Next.js app directory
+│   ├── simulator/          # Business simulator interface
+│   ├── report/[id]/        # Dynamic report pages
+│   └── api/                # API routes
+├── components/             # React components
+│   ├── simulator/          # Simulator-specific components
+│   ├── report/             # Report page components
+│   └── ui/                 # Reusable UI components
+├── data/                   # Static data files
+│   ├── currencies.js       # Supported currencies
+│   └── strategyContent.js  # Strategy definitions
+├── lib/                    # Utilities and configurations
+│   ├── calc/               # Financial calculation logic
+│   └── db/                 # Database utilities
+└── utils/                  # Helper functions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Configuration
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Custom Design Tokens
+The application uses Tailwind v4 with custom design tokens defined in `globals.css`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```css
+@theme {
+  --color-navy: #000321;
+  --color-app-primary: #4169E1;
+  --color-light-blue: #e3edf7;
+  --color-light-gray: #f5f5f5;
+}
+```
 
-## Learn More
+### Financial Calculations
+Calculation logic is modularized in `/lib/calc/`:
+- `calculateResults.js` - Core 12 strategies
+- `calculateDeepDive.js` - Extended DD40 analysis
 
-To learn more about Next.js, take a look at the following resources:
+### PDF Generation
+Professional reports are generated using @react-pdf/renderer with:
+- Custom layouts and styling
+- Multi-page strategy breakdowns
+- Embedded SVG icons for checkmarks
+- Dynamic currency formatting
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Database Integration
+Supabase integration provides:
+- Simulation data persistence
+- User report generation
+- Real-time data synchronization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📈 Business Logic
 
-## Deploy on Vercel
+### Strategy Categories
+1. **Revenue Optimization** - Pricing, upselling, cross-selling
+2. **Cost Management** - Expense reduction and efficiency
+3. **Market Expansion** - New products, partnerships, lead generation
+4. **Operational Excellence** - Process improvements and automation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Calculation Methodology
+- Maintains mathematical precision throughout calculations
+- Implements banker's rounding for financial accuracy
+- Compounds growth effects realistically across strategies
+- Provides both percentage and absolute impact metrics
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Design Philosophy
+
+- **Precision over Convenience**: Financial calculations prioritize mathematical accuracy
+- **User-Centric Experience**: Clean, intuitive interface for complex business analysis
+- **Professional Output**: High-quality PDF reports suitable for client presentations
+- **Accessibility**: Responsive design with proper contrast and typography
+
+## 📄 License
+
+This project is proprietary software. All rights reserved.
+
+## 🙏 Acknowledgments
+
+- Built with precision financial calculations following industry best practices
+- Inspired by proven business acceleration methodologies
+- Designed for entrepreneurs, consultants, and business analysts
+
+---
+
+#**[Live Demo](your-demo-url)** | **[Contact](your-contact-url)**
