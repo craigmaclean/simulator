@@ -2,9 +2,9 @@ const base =
     "inline-flex items-center justify-center font-semibold uppercase rounded-md transition-all cursor-pointer mb-4 shadow-md hover:opacity-[0.90] hover:shadow-xl focus:outline-none transition-all";
 
 const variants = {
-    primary: "bg-gunmetal text-white",
-    secondary: "bg-white text-gunmetal border border-gunmetal",
-    accent: "bg-gold text-gunmetal",
+    primary: "bg-navy text-white",
+    secondary: "bg-white text-navy border border-navy",
+    accent: "bg-primary text-white",
 };
 
 const sizes = {

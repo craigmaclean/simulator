@@ -51,7 +51,7 @@ export default async function ReportPage({ params }) {
             </h1>
 
             <div className="grid items-center gap-10 md:grid-cols-[1fr_3fr]">
-              <div className="order-2 md:order-1">
+              <div className="w-1/2 md:w-full m-auto order-2 md:order-1">
                 <Image
                   src="/roadmap.webp"
                   alt="Your Profit Acceleration Roadmap"

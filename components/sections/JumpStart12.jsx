@@ -3,7 +3,7 @@ import JumpStartGrid from "@/components/jumpstart12/JumpStartGrid";
 export default function JumpStart12({ isReportPage }) {
 
   return (
-    <section id="jumpstart-12" className="py-16 bg-light-blue">
+    <section id="jumpstart-12" className="py-16 bg-light-gray">
       <div className="px-4 mx-auto max-w-7xl">
         <div className="mb-8 md:mb-12 text-center">
           <h2 className="mb-4 font-bold text-h2-mobile md:text-h2-tablet lg:text-h2 leading-h2 text-gray-900">

@@ -139,7 +139,7 @@ export default function SendReportDialog({
 
             {isSubmitting ? (
             <div className="flex flex-col items-center justify-center py-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gunmetal mb-4"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-navy mb-4"></div>
                 <p className="text-lg text-gray-600">Saving your simulation...</p>
             </div>
             ) : submissionSuccess ? (
@@ -175,7 +175,7 @@ export default function SendReportDialog({
                 <DialogFooter className="justify-center">
                 <Button
                     onClick={handleReloadSimulator}
-                    className="bg-gunmetal text-white hover:bg-opacity-85 transition px-6"
+                    className="bg-navy text-white hover:bg-opacity-85 transition px-6"
                 >
                     Run Another Simulation
                 </Button>
@@ -242,7 +242,7 @@ export default function SendReportDialog({
                 </Button>
                 <Button
                     type="submit"
-                    className="bg-gunmetal text-white hover:bg-opacity-85 transition"
+                    className="bg-navy text-white hover:bg-opacity-85 transition"
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? "Sending..." : "Send report"}

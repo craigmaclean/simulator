@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function ReportJourney() {
   return (
-    <section id="report-journey" className="py-16 bg-light-blue">
+    <section id="report-journey" className="py-16 bg-light-gray">
       <div className="px-4 mx-auto max-w-6xl">
         <div className="grid items-center gap-10 md:grid-cols-[3fr_1fr]">
           <div className="order-1">
@@ -28,7 +28,7 @@ export default function ReportJourney() {
             </div>
           </div>
 
-          <div className="order-2">
+          <div className="order-2 w-1/2 md:w-full m-auto">
             <Image
               src="/compass.webp"
               alt="Your Journey to Profit Acceleration"

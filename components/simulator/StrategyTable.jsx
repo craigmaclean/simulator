@@ -29,7 +29,7 @@ export default function StrategyTable({
     <div className="overflow-x-auto">
       <Table className="w-full table-fixed">
         <TableHeader>
-            <TableRow className="bg-gunmetal hover:bg-gunmetal">
+            <TableRow className="bg-navy hover:bg-navy">
             <TableHead className="px-2 py-3 text-xs text-left text-white text-wrap sm:text-base sm:px-4 w-[40%] sm:w-auto">
                 AREA
             </TableHead>

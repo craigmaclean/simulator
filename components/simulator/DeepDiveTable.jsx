@@ -11,7 +11,7 @@ export default function DeepDiveTable({ rows, currency }) {
     <div className="overflow-x-auto">
       <table className="w-full">
         <thead>
-          <tr className="bg-gunmetal text-white">
+          <tr className="bg-navy text-white">
             <th className="px-4 py-3 text-left">AREA</th>
             <th className="px-4 py-3 text-right">PROFIT INCREASE</th>
           </tr>

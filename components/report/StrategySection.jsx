@@ -15,13 +15,13 @@ export default function StrategySection({ strategyData, isReversed = false }) {
   } = strategyData;
 
   return (
-    <section id={`strategy-${id}`} className={`section-strategy py-10 md:py-20 ${isReversed ? 'bg-light-blue' : ''}`}>
+    <section id={`strategy-${id}`} className={`section-strategy py-10 md:py-20 ${isReversed ? 'bg-light-gray' : ''}`}>
       <div className="px-4 mx-auto max-w-6xl">
 
         {/* Mobile Layout - Single Column with Specific Order */}
         <div className="block md:hidden space-y-6">
           {/* 1. Title */}
-          <h2 className="font-bold text-center text-h2-mobile leading-snug text-gray-900">
+          <h2 className="font-bold text-h2-mobile leading-tight text-gray-900">
             {strategySectionTitle}
           </h2>
 
@@ -34,8 +34,8 @@ export default function StrategySection({ strategyData, isReversed = false }) {
           {actionStepsList && actionStepsList.length > 0 && (
             <ul className="space-y-3 mb-7 mt-5">
               {actionStepsList.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 mb-4">
-                  <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
+                <li key={index} className="flex items-start gap-3 mb-2">
+                  <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -45,7 +45,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
           {/* 4. Video */}
           {videoId && videoHash && (
             <>
-              <div className="flex items-center justify-center text-sm text-white bg-[var(--color-gunmetal)] uppercase tracking-widest text-center p-1.5 mb-0">
+              <div className="flex items-center justify-center text-sm text-white bg-[var(--color-navy)] uppercase tracking-widest text-center p-1.5 mb-0">
                 <span>{videoContainerText}</span>
                 <CircleArrowDown className="flex-shrink-0 ml-3 w-5 h-5" />
               </div>
@@ -70,10 +70,10 @@ export default function StrategySection({ strategyData, isReversed = false }) {
 
           {/* 5. Increases Table */}
           <div className="my-8 md:my-0 max-w-3xl mx-auto border border-gray-300 overflow-hidden">
-            <table className="w-full text-center border-collapse uppercase">
-              <thead className="bg-gray-200">
+            <table className={`w-full text-center border-collapse uppercase bg-light-gray ${isReversed ? 'bg-white' : ''}`}>
+              <thead>
                 <tr>
-                  <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r border-gray-300">
+                  <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r">
                     <span className="block font-medium -m-0.5">Expected Increase In</span>
                     <span className="block font-bold text-lg">Revenue</span>
                   </th>
@@ -85,7 +85,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
               </thead>
               <tbody>
                 <tr className="text-lg font-bold text-gray-900">
-                  <td className="py-6 border-t border-gray-300 border-r border-gray-300">
+                  <td className="py-6 border-t border-gray-300 border-r">
                     {revenueIncrease}
                   </td>
                   <td className="py-6 border-t border-gray-300">
@@ -111,7 +111,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
               <div className="min-w-0">
                 {videoId && videoHash && (
                   <>
-                    <div className="flex items-center justify-center text-sm text-white bg-[var(--color-gunmetal)] uppercase tracking-widest text-center p-1.5">
+                    <div className="flex items-center justify-center text-sm text-white bg-[var(--color-navy)] uppercase tracking-widest text-center p-1.5">
                       <span>{videoContainerText}</span>
                       <CircleArrowDown className="flex-shrink-0 ml-3 w-5 h-5" />
                     </div>
@@ -135,10 +135,10 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                 )}
 
                 <div className="max-w-3xl mx-auto border border-gray-300 overflow-hidden">
-                  <table className="w-full text-center border-collapse uppercase">
-                    <thead className="bg-gray-200">
+                  <table className="w-full text-center border-collapse uppercase bg-white">
+                    <thead>
                       <tr>
-                        <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r border-gray-300">
+                        <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r">
                           <span className="block font-medium -m-0.5">Expected Increase In</span>
                           <span className="block font-bold text-lg">Revenue</span>
                         </th>
@@ -148,9 +148,9 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-white">
+                    <tbody>
                       <tr className="text-lg font-bold text-gray-900">
-                        <td className="py-6 border-t border-gray-300 border-r border-gray-300">
+                        <td className="py-6 border-t border-gray-300 border-r">
                           {revenueIncrease}
                         </td>
                         <td className="py-6 border-t border-gray-300">
@@ -176,8 +176,8 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                   {actionStepsList && actionStepsList.length > 0 && (
                     <ul className="space-y-3 mb-7 mt-5">
                       {actionStepsList.map((item, index) => (
-                        <li key={index} className="flex items-start gap-3 mb-4">
-                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
+                        <li key={index} className="flex items-start gap-3 mb-2">
+                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -204,8 +204,8 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                   {actionStepsList && actionStepsList.length > 0 && (
                     <ul className="space-y-3 mb-7 mt-5">
                       {actionStepsList.map((item, index) => (
-                        <li key={index} className="flex items-start gap-3 mb-4">
-                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
+                        <li key={index} className="flex items-start gap-3 mb-2">
+                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -220,7 +220,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
               <div className="min-w-0">
                 {videoId && videoHash && (
                   <>
-                    <div className="flex items-center justify-center text-sm text-white bg-[var(--color-gunmetal)] uppercase tracking-widest text-center p-1.5">
+                    <div className="flex items-center justify-center text-sm text-white bg-[var(--color-navy)] uppercase tracking-widest text-center p-1.5">
                       <span>{videoContainerText}</span>
                       <CircleArrowDown className="flex-shrink-0 ml-3 w-5 h-5" />
                     </div>
@@ -244,10 +244,10 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                 )}
 
                 <div className="max-w-3xl mx-auto border border-gray-300 overflow-hidden">
-                  <table className="w-full text-center border-collapse uppercase">
-                    <thead className="bg-gray-200">
+                  <table className="w-full text-center border-collapse uppercase bg-light-gray">
+                    <thead>
                       <tr>
-                        <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r border-gray-300">
+                        <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r">
                           <span className="block font-medium -m-0.5">Expected Increase In</span>
                           <span className="block font-bold text-lg">Revenue</span>
                         </th>
@@ -259,7 +259,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     </thead>
                     <tbody>
                       <tr className="text-lg font-bold text-gray-900">
-                        <td className="py-6 border-t border-gray-300 border-r border-gray-300">
+                        <td className="py-6 border-t border-gray-300 border-r">
                           {revenueIncrease}
                         </td>
                         <td className="py-6 border-t border-gray-300">

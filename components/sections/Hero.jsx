@@ -10,7 +10,7 @@ export default function Hero() {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
             <img src="./AdobeStock_186301146.jpeg" alt="" className="object-cover w-full h-full" />
-            <div className="absolute inset-0 bg-light-blue opacity-30" />
+            <div className="absolute inset-0 bg-light-gray opacity-30" />
             </div>
             {/* Content */}
             <div className="relative z-10 px-4 mx-auto max-w-7xl">

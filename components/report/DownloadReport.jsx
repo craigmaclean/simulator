@@ -12,15 +12,15 @@ export default function DownloadReport({ simulation }) {
 
           <ul className="max-w-5xl mx-auto space-y-3 mb-7 mt-5">
             <li className="flex items-start gap-3 mb-4">
-              <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
+              <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
               <span><strong>See the full picture:</strong> Your report consolidates key metrics, highlights profit-levers, and shows where you'll gain impact.</span>
             </li>
             <li className="flex items-start gap-3 mb-4">
-              <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
+              <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
               <span><strong>Get a clear next step:</strong> We've organized each impact area into practical recommendations you can act on immediately.</span>
             </li>
             <li className="flex items-start gap-3 mb-4">
-              <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-gunmetal-light)] text-white mt-1" />
+              <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
               <span><strong>Own your roadmap:</strong> With this in hand, you'll be fully equipped to lead the change and measure progress along the way.</span>
             </li>
           </ul>

@@ -19,8 +19,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'center',
     color: '#000321', // navy
+    textTransform: 'uppercase'
   },
-
+  headerLarge: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+    color: '#000321', // navy
+    textTransform: 'uppercase'
+  },
   // Journey Section
   journeySection: {
     backgroundColor: '#f4f6ff', // light-blue
@@ -266,6 +274,36 @@ export default function ReportPDF({ simulation }) {
   return (
     <Document>
       {/* Page 1: Header, Journey, Profit Potential */}
+      <Page size="LETTER" style={styles.page}>
+        {/* Header */}
+        <Text style={styles.header}>Your Profit Acceleration <span style={styles.headerLarge}>Roadmap</span></Text>
+
+        <Text style={{ fontSize: 11, textAlign: 'center', color: '#4b5563', marginBottom: 10 }}>
+          Prepared for: {simulation.first_name} {simulation.last_name}
+        </Text>
+
+        {/* Journey Section */}
+        <View style={styles.journeySection}>
+          <Text style={styles.journeyTitle}>Your Journey to Profit Acceleration!</Text>
+
+          <Text style={styles.journeyText}>
+            First of all, your results are customized, just for you. If you'd like help with any strategy, the bottom of this roadmap will contain a link to book a strategy session with me.
+          </Text>
+
+          <Text style={styles.journeyText}>
+            The purpose of this roadmap is to give an overview of the path to take in order to create the maximum amount of revenue and profits in your company in the shortest time possible. You can always refer to the report page to watch the videos, which will help guide your understanding on each strategy.
+          </Text>
+
+          <Text style={styles.journeyTextBold}>
+            I'll outline the major strategies you should follow and the impact to be made.
+          </Text>
+
+          <Text style={styles.journeySignature}>
+            - Karl Bryan, Your Profit Acceleration Specialist
+          </Text>
+        </View>
+      </Page>
+
       <Page size="LETTER" style={styles.page}>
         {/* Header */}
         <Text style={styles.header}>Your Profit Acceleration Roadmap</Text>

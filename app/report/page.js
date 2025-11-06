@@ -36,7 +36,7 @@ export default function ReportPage() {
     </section>{/* end #report-header */}
 
 
-    <section id="report-journey" className="py-16 bg-light-blue">
+    <section id="report-journey" className="py-16 bg-light-gray">
       <div className="px-4 mx-auto max-w-6xl">
         <div className="grid items-center gap-10 md:grid-cols-[3fr_1fr]">
             {/* Left Column - Image */}
