@@ -1,4 +1,4 @@
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Svg, Circle, Path } from '@react-pdf/renderer';
 import { STRATEGY_CONTENT } from '@/data/strategyContent';
 
 // Register fonts if needed
@@ -16,61 +16,65 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: -5,
     textAlign: 'center',
-    color: '#000321', // navy
+    color: '#000321',
     textTransform: 'uppercase'
   },
   headerLarge: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    fontSize: 45,
+    fontWeight: 'extrabold',
+    marginBottom: 5,
     textAlign: 'center',
-    color: '#000321', // navy
+    color: '#1a3282',
     textTransform: 'uppercase'
   },
   // Journey Section
   journeySection: {
-    backgroundColor: '#f4f6ff', // light-blue
+    backgroundColor: '#f5f5f5',
     padding: 20,
-    marginBottom: 10,
+    marginBottom: 5,
     borderRadius: 8,
   },
   journeyTitle: {
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: 'bold',
-    color: '#000321',
+    color: '#1c1c1c',
     marginBottom: 12,
-    textAlign: 'center'
+    textAlign: 'left'
   },
   journeyText: {
-    fontSize: 11,
+    fontSize: 12,
     lineHeight: 1.6,
-    color: '#4b5563',
+    color: '#1c1c1c',
     marginBottom: 8,
   },
   journeyTextBold: {
     fontSize: 11,
     lineHeight: 1.6,
-    color: '#4b5563',
+    color: '#1c1c1c',
     marginBottom: 8,
     fontWeight: 'bold',
   },
   journeySignature: {
     fontSize: 11,
     lineHeight: 1.6,
-    color: '#4b5563',
+    color: '#1c1c1c',
     fontStyle: 'italic',
     marginTop: 8,
+  },
+  image: {
+    marginVertical: 15,
+    marginHorizontal: 100,
   },
 
   // Profit Potential
   profitPotentialTitle: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#000321',
-    marginBottom: 20,
+    color: '#1c1c1c',
+    marginBottom: 5,
     marginTop: 20,
   },
 
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
   summaryRow: {
     flexDirection: 'row',
     gap: 12,
-    marginBottom: 16,
+    marginBottom: 12,
   },
   summaryCard: {
     flex: 1,
@@ -121,28 +125,18 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
 
-  // Deep Dive Section
-  deepDiveTitle: {
-    fontSize: 14,
-    fontWeight: 'semibold',
-    textAlign: 'center',
-    color: '#000321',
-    textTransform: 'uppercase',
-    marginTop: 24,
-    marginBottom: 16,
-  },
-
   // Strategy Section
   strategySection: {
-    marginTop: 30,
+    marginTop: 20,
     marginBottom: 30,
+    flexDirection: 'row',
+    gap: 20,
   },
-  strategySectionAlt: {
-    marginTop: 30,
-    marginBottom: 30,
-    backgroundColor: '#f4f6ff',
-    padding: 20,
-    borderRadius: 8,
+  strategyContent: {
+    flex: 2,
+  },
+  strategyMetrics: {
+    flex: 1,
   },
   strategyTitle: {
     fontSize: 20,
@@ -170,7 +164,10 @@ const styles = StyleSheet.create({
     height: 12,
     marginRight: 8,
     marginTop: 2,
-    color: '#3b82f6', // bright-blue
+  },
+  checkmarkSvg: {
+    width: 12,
+    height: 12,
   },
   actionStepText: {
     flex: 1,
@@ -179,52 +176,74 @@ const styles = StyleSheet.create({
     color: '#374151',
   },
 
-  // Table
-  table: {
-    marginTop: 16,
-    borderWidth: 1,
-    borderColor: '#d1d5db',
+  // Metrics Cards (replacing the table)
+  metricCard: {
+    backgroundColor: '#f3f4f6',
+    padding: 12,
+    marginBottom: 12,
     borderRadius: 4,
   },
-  tableHeader: {
+  metricLabel: {
+    fontSize: 9,
+    color: '#374151',
+    textTransform: 'uppercase',
+    marginBottom: 4,
+    fontWeight: 'medium',
+  },
+  metricValue: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000321',
+  },
+
+  // Strategy Metrics Table
+  strategyMetricsTable: {
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+  },
+  strategyTableRow: {
     flexDirection: 'row',
+  },
+  strategyTableHeader: {
+    flex: 1,
     backgroundColor: '#e5e7eb',
+    padding: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#d1d5db',
   },
-  tableHeaderCell: {
+  strategyTableCell: {
     flex: 1,
+    backgroundColor: '#ffffff',
     padding: 12,
     textAlign: 'center',
   },
-  tableHeaderCellLeft: {
-    borderRightWidth: 1,
-    borderRightColor: '#d1d5db',
-  },
-  tableHeaderLabel: {
-    fontSize: 8,
+  strategyTableHeaderText: {
+    fontSize: 9,
     textTransform: 'uppercase',
+    fontWeight: 'normal',
+    textAlign: 'center',
+    color: '#212121',
     marginBottom: 2,
-    fontWeight: 'medium',
   },
-  tableHeaderValue: {
+  strategyTableHeaderTextBold: {
+    fontSize: 10,
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#212121',
+  },
+  strategyTableCellText: {
     fontSize: 12,
     fontWeight: 'bold',
-  },
-  tableBody: {
-    flexDirection: 'row',
-    backgroundColor: '#ffffff',
-  },
-  tableBodyCell: {
-    flex: 1,
-    padding: 16,
     textAlign: 'center',
-    fontSize: 14,
-    fontWeight: 'bold',
+    color: '#212121',
   },
-  tableBodyCellLeft: {
-    borderRightWidth: 1,
-    borderRightColor: '#d1d5db',
+
+  // Divider between strategies
+  strategyDivider: {
+    height: 1,
+    backgroundColor: '#d1d5db',
+    marginVertical: 20,
   },
 
   // Footer
@@ -276,9 +295,10 @@ export default function ReportPDF({ simulation }) {
       {/* Page 1: Header, Journey, Profit Potential */}
       <Page size="LETTER" style={styles.page}>
         {/* Header */}
-        <Text style={styles.header}>Your Profit Acceleration <span style={styles.headerLarge}>Roadmap</span></Text>
+        <Text style={styles.header}>Your Profit Acceleration</Text>
+        <Text style={styles.headerLarge}>Roadmap</Text>
 
-        <Text style={{ fontSize: 11, textAlign: 'center', color: '#4b5563', marginBottom: 10 }}>
+        <Text style={{ fontSize: 11, textAlign: 'center', fontWeight: 'semibold', color: '#1c1c1c', marginBottom: 10 }}>
           Prepared for: {simulation.first_name} {simulation.last_name}
         </Text>
 
@@ -299,37 +319,7 @@ export default function ReportPDF({ simulation }) {
           </Text>
 
           <Text style={styles.journeySignature}>
-            - Karl Bryan, Your Profit Acceleration Specialist
-          </Text>
-        </View>
-      </Page>
-
-      <Page size="LETTER" style={styles.page}>
-        {/* Header */}
-        <Text style={styles.header}>Your Profit Acceleration Roadmap</Text>
-
-        <Text style={{ fontSize: 11, textAlign: 'center', color: '#4b5563', marginBottom: 10 }}>
-          Prepared for: {simulation.first_name} {simulation.last_name}
-        </Text>
-
-        {/* Journey Section */}
-        <View style={styles.journeySection}>
-          <Text style={styles.journeyTitle}>Your Journey to Profit Acceleration!</Text>
-
-          <Text style={styles.journeyText}>
-            First of all, your results are customized, just for you. If you'd like help with any strategy, the bottom of this roadmap will contain a link to book a strategy session with me.
-          </Text>
-
-          <Text style={styles.journeyText}>
-            The purpose of this roadmap is to give an overview of the path to take in order to create the maximum amount of revenue and profits in your company in the shortest time possible. You can always refer to the report page to watch the videos, which will help guide your understanding on each strategy.
-          </Text>
-
-          <Text style={styles.journeyTextBold}>
-            I'll outline the major strategies you should follow and the impact to be made.
-          </Text>
-
-          <Text style={styles.journeySignature}>
-            - Karl Bryan, Your Profit Acceleration Specialist
+            - [COACH NAME], Your Profit Acceleration Specialist
           </Text>
         </View>
 
@@ -371,8 +361,6 @@ export default function ReportPDF({ simulation }) {
         {/* Deep Dive Row (if applicable) */}
         {hasDeepDive && (
           <>
-            <Text style={styles.deepDiveTitle}>With Deep Dive 40 Strategies</Text>
-
             <View style={styles.summaryRow}>
               <View style={styles.summaryCardDeepDive}>
                 <Text style={styles.summaryLabelDeepDive}>Expected DD40 Revenue Increase</Text>
@@ -393,57 +381,97 @@ export default function ReportPDF({ simulation }) {
             </View>
           </>
         )}
-
-        <Text style={styles.footer}>
-          © {new Date().getFullYear()} Profit Acceleration Software™ | profitaccelerationsoftware.com
-        </Text>
       </Page>
 
-      {/* Strategy Pages */}
-      {strategiesWithContent.map((strategy, index) => (
-        <Page key={strategy.id} size="LETTER" style={styles.page}>
-          <View style={index % 2 === 0 ? styles.strategySection : styles.strategySectionAlt}>
-            <Text style={styles.strategyTitle}>{strategy.strategySectionTitle}</Text>
+      {/* Strategy Pages - 2 strategies per page */}
+      {Array.from({ length: Math.ceil(strategiesWithContent.length / 2) }, (_, pageIndex) => {
+        const startIndex = pageIndex * 2;
+        const strategiesOnPage = strategiesWithContent.slice(startIndex, startIndex + 2);
 
-            <Text style={styles.strategySubtitle}>{strategy.actionSteps}</Text>
+        return (
+          <Page key={`strategy-page-${pageIndex}`} size="LETTER" style={styles.page}>
+            {strategiesOnPage.map((strategy, strategyIndex) => (
+              <View key={strategy.id}>
+                <View style={styles.strategySection}>
+                  <View style={styles.strategyContent}>
+                    <Text style={styles.strategyTitle}>{strategy.strategySectionTitle}</Text>
+                    <Text style={styles.strategySubtitle}>{strategy.actionSteps}</Text>
 
-            <View style={styles.actionStepsList}>
-              {strategy.actionStepsList && strategy.actionStepsList.map((step, idx) => (
-                <View key={idx} style={styles.actionStepItem}>
-                  <Text style={styles.checkmark}>✓</Text>
-                  <Text style={styles.actionStepText}>{step}</Text>
-                </View>
-              ))}
-            </View>
+                    <View style={styles.actionStepsList}>
+                      {strategy.actionStepsList && strategy.actionStepsList.map((step, idx) => (
+                        <View key={idx} style={styles.actionStepItem}>
+                          <View style={styles.checkmark}>
+                            <Svg style={styles.checkmarkSvg} viewBox="0 0 24 24">
+                              <Circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                fill="#4169E1"
+                                stroke="#4169E1"
+                                strokeWidth="2"
+                              />
+                              <Path
+                                d="m9 12 2 2 4-4"
+                                fill="none"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </Svg>
+                          </View>
+                          <Text style={styles.actionStepText}>{step}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  </View>
 
-            {/* Table */}
-            <View style={styles.table}>
-              <View style={styles.tableHeader}>
-                <View style={[styles.tableHeaderCell, styles.tableHeaderCellLeft]}>
-                  <Text style={styles.tableHeaderLabel}>Expected Increase In</Text>
-                  <Text style={styles.tableHeaderValue}>Revenue</Text>
+                  <View style={styles.strategyMetrics}>
+                    <View style={styles.strategyMetricsTable}>
+                      {/* Header Row */}
+                      <View style={styles.strategyTableRow}>
+                        <View style={styles.strategyTableHeader}>
+                          <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
+                          <Text style={styles.strategyTableHeaderTextBold}>Revenue</Text>
+                        </View>
+                      </View>
+                      {/* Value Row */}
+                      <View style={styles.strategyTableRow}>
+                        <View style={styles.strategyTableCell}>
+                          <Text style={styles.strategyTableCellText}>{strategy.revenueIncrease}</Text>
+                        </View>
+                      </View>
+
+                      {/* Header Row */}
+                      <View style={styles.strategyTableRow}>
+                        <View style={[styles.strategyTableHeader, { borderTopWidth: 1, borderTopColor: '#d1d5db' }]}>
+                          <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
+                          <Text style={styles.strategyTableHeaderTextBold}>Profit</Text>
+                        </View>
+                      </View>
+                      {/* Value Row */}
+                      <View style={styles.strategyTableRow}>
+                        <View style={styles.strategyTableCell}>
+                          <Text style={styles.strategyTableCellText}>{strategy.profitIncrease}</Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
                 </View>
-                <View style={styles.tableHeaderCell}>
-                  <Text style={styles.tableHeaderLabel}>Expected Increase In</Text>
-                  <Text style={styles.tableHeaderValue}>Profit</Text>
-                </View>
+
+                {/* Add divider line between strategies (but not after the last one) */}
+                {strategyIndex < strategiesOnPage.length - 1 && (
+                  <View style={styles.strategyDivider} />
+                )}
               </View>
-              <View style={styles.tableBody}>
-                <Text style={[styles.tableBodyCell, styles.tableBodyCellLeft]}>
-                  {strategy.revenueIncrease}
-                </Text>
-                <Text style={styles.tableBodyCell}>
-                  {strategy.profitIncrease}
-                </Text>
-              </View>
-            </View>
-          </View>
+            ))}
 
-          <Text style={styles.footer}>
-            © {new Date().getFullYear()} Profit Acceleration Software™ | Page {index + 2} of {strategiesWithContent.length + 1}
-          </Text>
-        </Page>
-      ))}
+            <Text style={styles.footer}>
+              © {new Date().getFullYear()} Profit Acceleration Software™ | Page {pageIndex + 2} of {Math.ceil(strategiesWithContent.length / 2) + 1}
+            </Text>
+          </Page>
+        );
+      })}
     </Document>
   );
 }

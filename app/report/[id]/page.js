@@ -43,7 +43,7 @@ export default async function ReportPage({ params }) {
 
   return (
     <>
-      <section id="report-header" className="py-16">
+      <section id="report-header" className="py-12 md:py-16">
         <div className="px-4 mx-auto max-w-7xl">
           <div className="text-center">
             <h1 className="mb-4 font-bold text-h1-mobile leading-12 md:leading-tight md:text-6xl tracking-tight text-gray-900">
