@@ -10,7 +10,7 @@
 /* Tailwind v4: define tokens here */
 @theme {
   --color-navy: #000321;
-  --color-primary: #4169E1;
+  --color-app-primary: #4169E1; /* pre-pended with app to avoid conflict with shadcn default */
   --color-light-blue: #e3edf7;
   --color-light-gray: #f5f5f5;
 
@@ -129,10 +129,8 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  /*
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  */
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -166,10 +164,8 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  /*
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  */
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -236,4 +232,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* MISC *
+
+/* Override input highlight select color */
+*::selection {
+  background-color: Highlight;
+  color: HighlightText;
 }

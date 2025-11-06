@@ -15,7 +15,7 @@ export default function JumpStartCard({
     return (
       <LinkToSection href={`#strategy-${anchorId}`}>
         <div className="h-[6rem] md:h-[8rem]">
-          <div className="flex items-center justify-center h-full px-4 text-white bg-navy rounded-lg hover:bg-primary transition-colors duration-300">
+          <div className="flex items-center justify-center h-full px-4 text-white bg-navy rounded-lg hover:bg-app-primary transition-colors duration-300">
             <div className="font-semibold uppercase text-card-title text-center">{cardTitle}</div>
           </div>
         </div>
@@ -30,7 +30,7 @@ export default function JumpStartCard({
         <div className="flex items-center justify-center px-4 text-white flip-card-front bg-navy">
           <div className="font-semibold uppercase text-card-title">{cardTitle}</div>
         </div>
-        <div className="flex items-center justify-center px-4 flip-card-back bg-primary text-white">
+        <div className="flex items-center justify-center px-4 flip-card-back bg-app-primary text-white">
           <div className="text-card-desc">{cardDescription}</div>
         </div>
       </div>

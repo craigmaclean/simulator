@@ -1,7 +1,8 @@
+import { CURRENCIES } from '@/data/currencies';
 import { CircleArrowDown, CircleCheck } from 'lucide-react';
 import ReportButton from "./ReportButton";
 
-export default function StrategySection({ strategyData, isReversed = false }) {
+export default function StrategySection({ strategyData, isReversed = false, currency = 'USD' }) {
   const {
     id,
     strategySectionTitle,
@@ -10,9 +11,18 @@ export default function StrategySection({ strategyData, isReversed = false }) {
     videoId,
     videoHash,
     videoContainerText,
-    revenueIncrease,
-    profitIncrease,
+    revenueIncreasePercent,
+    revenueIncreaseAmount,
+    profitIncreasePercent,
+    profitIncreaseAmount,
   } = strategyData;
+
+
+  const formatCurrency = (value) => {
+    const currencyData = CURRENCIES.find(c => c.code === currency);
+    const symbol = currencyData ? currencyData.symbol : '$';
+    return `${symbol}${Math.round(value).toLocaleString()}`;
+  };
 
   return (
     <section id={`strategy-${id}`} className={`section-strategy py-10 md:py-20 ${isReversed ? 'bg-light-gray' : ''}`}>
@@ -35,7 +45,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
             <ul className="space-y-3 mb-7 mt-5">
               {actionStepsList.map((item, index) => (
                 <li key={index} className="flex items-start gap-3 mb-2">
-                  <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
+                  <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-app-primary)] text-white mt-1" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -86,10 +96,10 @@ export default function StrategySection({ strategyData, isReversed = false }) {
               <tbody>
                 <tr className="text-lg font-bold text-gray-900">
                   <td className="py-6 border-t border-gray-300 border-r">
-                    {revenueIncrease}
+                    {revenueIncreasePercent.toFixed(1)}% / {formatCurrency(revenueIncreaseAmount)}
                   </td>
                   <td className="py-6 border-t border-gray-300">
-                    {profitIncrease}
+                    {profitIncreasePercent.toFixed(1)}% / {formatCurrency(profitIncreaseAmount)}
                   </td>
                 </tr>
               </tbody>
@@ -151,10 +161,10 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     <tbody>
                       <tr className="text-lg font-bold text-gray-900">
                         <td className="py-6 border-t border-gray-300 border-r">
-                          {revenueIncrease}
+                          {revenueIncreasePercent.toFixed(1)}% / {formatCurrency(revenueIncreaseAmount)}
                         </td>
                         <td className="py-6 border-t border-gray-300">
-                          {profitIncrease}
+                          {profitIncreasePercent.toFixed(1)}% / {formatCurrency(profitIncreaseAmount)}
                         </td>
                       </tr>
                     </tbody>
@@ -177,7 +187,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     <ul className="space-y-3 mb-7 mt-5">
                       {actionStepsList.map((item, index) => (
                         <li key={index} className="flex items-start gap-3 mb-2">
-                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
+                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-app-primary)] text-white mt-1" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -205,7 +215,7 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     <ul className="space-y-3 mb-7 mt-5">
                       {actionStepsList.map((item, index) => (
                         <li key={index} className="flex items-start gap-3 mb-2">
-                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-primary)] text-white mt-1" />
+                          <CircleCheck className="flex-shrink-0 w-5 h-5 fill-[var(--color-app-primary)] text-white mt-1" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -260,10 +270,10 @@ export default function StrategySection({ strategyData, isReversed = false }) {
                     <tbody>
                       <tr className="text-lg font-bold text-gray-900">
                         <td className="py-6 border-t border-gray-300 border-r">
-                          {revenueIncrease}
+                          {revenueIncreasePercent.toFixed(1)}% / {formatCurrency(revenueIncreaseAmount)}
                         </td>
                         <td className="py-6 border-t border-gray-300">
-                          {profitIncrease}
+                          {profitIncreasePercent.toFixed(1)}% / {formatCurrency(profitIncreaseAmount)}
                         </td>
                       </tr>
                     </tbody>

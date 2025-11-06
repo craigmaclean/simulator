@@ -11,13 +11,13 @@ export default function Footer() {
           <nav className="flex space-x-6 text-sm">
             <a
               href="/privacy"
-              className="transition-colors duration-200 hover:text-primary"
+              className="transition-colors duration-200 hover:text-app-primary"
             >
               Privacy
             </a>
             <a
               href="/terms"
-              className="transition-colors duration-200 hover:text-primary"
+              className="transition-colors duration-200 hover:text-app-primary"
             >
               Terms
             </a>

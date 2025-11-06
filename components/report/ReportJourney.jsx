@@ -28,7 +28,7 @@ export default function ReportJourney() {
             </div>
           </div>
 
-          <div className="order-2 w-1/2 md:w-full m-auto">
+          <div className="hidden sm:inline order-2 w-1/2 md:w-full m-auto">
             <Image
               src="/compass.webp"
               alt="Your Journey to Profit Acceleration"

@@ -4,7 +4,7 @@ const base =
 const variants = {
     primary: "bg-navy text-white",
     secondary: "bg-white text-navy border border-navy",
-    accent: "bg-primary text-white",
+    accent: "bg-app-primary text-white",
 };
 
 const sizes = {

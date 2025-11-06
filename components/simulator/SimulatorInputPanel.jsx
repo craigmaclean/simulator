@@ -37,6 +37,15 @@ export default function SimulatorInputPanel({ formData, onChange }) {
         onChange('revenue', numericValue);
     };
 
+    // Handle percentage input
+    const handlePercentageChange = (fieldName) => (e) => {
+      const value = e.target.value;
+      // Limit to 2 digits (0-99)
+      if (value === '' || (value.length <= 2 && parseFloat(value) <= 100)) {
+        onChange(fieldName, parseFloat(value) || 0);
+      }
+    };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 mb-8">
       <div className="lg:col-span-2">
@@ -88,8 +97,9 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             min={0}
             max={100}
             step="0.1"
+            maxLength={2}
             value={formData.grossMargin}
-            onChange={(e) => onChange('grossMargin', parseFloat(e.target.value) || 0)}
+            onChange={handlePercentageChange('grossMargin')}
             onFocus={(e) => e.target.select()}
         />
       </div>
@@ -106,7 +116,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             max={100}
             step="0.1"
             value={formData.netMargin}
-            onChange={(e) => onChange('netMargin', parseFloat(e.target.value) || 0)}
+            onChange={handlePercentageChange('netMargin')}
             onFocus={(e) => e.target.select()}
         />
       </div>

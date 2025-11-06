@@ -1,5 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, Svg, Circle, Path } from '@react-pdf/renderer';
 import { STRATEGY_CONTENT } from '@/data/strategyContent';
+import { CURRENCIES } from '@/data/currencies';
 
 // Register fonts if needed
 // Font.register({ family: 'YourFont', src: '/fonts/your-font.ttf' });
@@ -288,8 +289,8 @@ const styles = StyleSheet.create({
 
 export default function ReportPDF({ simulation }) {
   const formatCurrency = (value) => {
-    const symbols = { USD: '$', CAD: 'CA$', EUR: '€', GBP: '£' };
-    const symbol = symbols[simulation.currency] || '$';
+    const currency = CURRENCIES.find(c => c.code === simulation.currency);
+    const symbol = currency ? currency.symbol : '$';
     return `${symbol}${Math.round(value).toLocaleString('en-US')}`;
   };
 
@@ -304,8 +305,10 @@ export default function ReportPDF({ simulation }) {
     return {
       ...strategy,
       ...content,
-      revenueIncrease: `${((strategy.profit_increase / simulation.annual_revenue) * 100).toFixed(1)}% / ${formatCurrency(strategy.profit_increase)}`,
-      profitIncrease: `${((strategy.profit_increase / simulation.currentProfit) * 100).toFixed(1)}% / ${formatCurrency(strategy.profit_increase)}`,
+      revenueIncreasePercent: (strategy.profit_increase / simulation.annual_revenue) * 100,
+      revenueIncreaseAmount: strategy.profit_increase,
+      profitIncreasePercent: (strategy.profit_increase / simulation.currentProfit) * 100,
+      profitIncreaseAmount: strategy.profit_increase,
     };
   });
 
@@ -457,7 +460,9 @@ export default function ReportPDF({ simulation }) {
                       </View>
                       <View style={styles.strategyTableRow}>
                         <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
-                          <Text style={styles.strategyTableCellText}>{strategy.revenueIncrease}</Text>
+                          <Text style={styles.strategyTableCellText}>
+                            {strategy.revenueIncreasePercent.toFixed(1)}% / {formatCurrency(strategy.revenueIncreaseAmount)}
+                          </Text>
                         </View>
                       </View>
                     </View>
@@ -472,7 +477,9 @@ export default function ReportPDF({ simulation }) {
                       </View>
                       <View style={styles.strategyTableRow}>
                         <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
-                          <Text style={styles.strategyTableCellText}>{strategy.profitIncrease}</Text>
+                          <Text style={styles.strategyTableCellText}>
+                            {strategy.profitIncreasePercent.toFixed(1)}% / {formatCurrency(strategy.profitIncreaseAmount)}
+                          </Text>
                         </View>
                       </View>
                     </View>

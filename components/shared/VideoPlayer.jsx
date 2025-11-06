@@ -2,28 +2,23 @@ export default function VideoPlayer() {
     return (
 
         <div className="relative overflow-hidden rounded-md shadow-lg">
-            <div
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://player.vimeo.com/video/1134359264?h=d2d4f270ac&badge=0&autopause=0&player_id=0&app_id=58479"
+                frameBorder={0}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
                 style={{
-                    position: "relative",
-                    width: 1,
-                    minWidth: "100%",
-                    paddingBottom: "56.25%"
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
                 }}
-                >
-                <iframe
-                    allow="autoplay"
-                    className="spotlightr"
-                    allowtransparency="true"
-                    style={{ width: 1, minWidth: "100%", height: "100%", position: "absolute" }}
-                    allowFullScreen="{true}"
-                    src="https://noresultsnofee.cdn.spotlightr.com/watch/MTI2NDE1OA==?fallback=true"
-                    frameBorder={0}
-                    scrolling="no"
-                    name="videoPlayer"
-                >
-                    {" "}
-                </iframe>
+                title="Sim-Homepage-Video-1"
+              />
             </div>
+
 
             {/* Video Element (hidden initially) */}
             {/* <video id="heroVideo" className="object-cover w-full h-full" poster="./simulator-video-thumbnail.jpg" controls style={{display: 'none'}}>
