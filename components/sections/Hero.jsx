@@ -9,7 +9,7 @@ export default function Hero() {
         <section id="hero" className="relative py-16 overflow-hidden md:py-24">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
-            <img src="./AdobeStock_186301146.jpeg" alt="" className="object-cover w-full h-full" />
+            <img src="./hero-bg-compounding.jpg" alt="Unlock the Power of Compounding Growth" className="object-cover w-full h-full" />
             <div className="absolute inset-0 bg-light-gray opacity-30" />
             </div>
             {/* Content */}
@@ -30,7 +30,7 @@ export default function Hero() {
                         </LinkToSection>
                     </div>
 
-                    </div>
+                  </div>
 
                     <VideoPlayer />
                 </div>

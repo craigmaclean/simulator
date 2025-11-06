@@ -132,11 +132,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 20,
   },
+  strategySectionAlt: {
+    marginTop: 20,
+    marginBottom: 30,
+    flexDirection: 'row',
+    gap: 20,
+    backgroundColor: '#f5f5f5',
+    padding: 20,
+    borderRadius: 8,
+  },
   strategyContent: {
     flex: 2,
   },
   strategyMetrics: {
     flex: 1,
+    marginTop: 20,
   },
   strategyTitle: {
     fontSize: 20,
@@ -163,7 +173,7 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     marginRight: 8,
-    marginTop: 2,
+    marginTop: 0,
   },
   checkmarkSvg: {
     width: 12,
@@ -200,20 +210,31 @@ const styles = StyleSheet.create({
   strategyMetricsTable: {
     borderWidth: 1,
     borderColor: '#d1d5db',
+    marginBottom: 16,
+    backgroundColor: '#f5f5f5',
+  },
+  strategyMetricsTableAlt: {
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    marginBottom: 16,
+    backgroundColor: '#ffffff',
   },
   strategyTableRow: {
     flexDirection: 'row',
   },
   strategyTableHeader: {
     flex: 1,
-    backgroundColor: '#e5e7eb',
     padding: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#d1d5db',
   },
   strategyTableCell: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    padding: 12,
+    textAlign: 'center',
+  },
+  strategyTableCellAlt: {
+    flex: 1,
     padding: 12,
     textAlign: 'center',
   },
@@ -391,8 +412,7 @@ export default function ReportPDF({ simulation }) {
         return (
           <Page key={`strategy-page-${pageIndex}`} size="LETTER" style={styles.page}>
             {strategiesOnPage.map((strategy, strategyIndex) => (
-              <View key={strategy.id}>
-                <View style={styles.strategySection}>
+              <View key={strategy.id} style={strategyIndex % 2 === 0 ? styles.strategySection : styles.strategySectionAlt}>
                   <View style={styles.strategyContent}>
                     <Text style={styles.strategyTitle}>{strategy.strategySectionTitle}</Text>
                     <Text style={styles.strategySubtitle}>{strategy.actionSteps}</Text>
@@ -427,43 +447,37 @@ export default function ReportPDF({ simulation }) {
                   </View>
 
                   <View style={styles.strategyMetrics}>
-                    <View style={styles.strategyMetricsTable}>
-                      {/* Header Row */}
+                    {/* Revenue Table */}
+                    <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
                       <View style={styles.strategyTableRow}>
                         <View style={styles.strategyTableHeader}>
                           <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
                           <Text style={styles.strategyTableHeaderTextBold}>Revenue</Text>
                         </View>
                       </View>
-                      {/* Value Row */}
                       <View style={styles.strategyTableRow}>
-                        <View style={styles.strategyTableCell}>
+                        <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
                           <Text style={styles.strategyTableCellText}>{strategy.revenueIncrease}</Text>
                         </View>
                       </View>
+                    </View>
 
-                      {/* Header Row */}
+                    {/* Profit Table */}
+                    <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
                       <View style={styles.strategyTableRow}>
-                        <View style={[styles.strategyTableHeader, { borderTopWidth: 1, borderTopColor: '#d1d5db' }]}>
+                        <View style={styles.strategyTableHeader}>
                           <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
                           <Text style={styles.strategyTableHeaderTextBold}>Profit</Text>
                         </View>
                       </View>
-                      {/* Value Row */}
                       <View style={styles.strategyTableRow}>
-                        <View style={styles.strategyTableCell}>
+                        <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
                           <Text style={styles.strategyTableCellText}>{strategy.profitIncrease}</Text>
                         </View>
                       </View>
                     </View>
                   </View>
                 </View>
-
-                {/* Add divider line between strategies (but not after the last one) */}
-                {strategyIndex < strategiesOnPage.length - 1 && (
-                  <View style={styles.strategyDivider} />
-                )}
-              </View>
             ))}
 
             <Text style={styles.footer}>

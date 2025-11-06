@@ -11,9 +11,7 @@
 @theme {
   --color-navy: #000321;
   --color-primary: #4169E1;
-  --color-gunmetal-light: #7F9EB9;
-  --color-light-blue: #e3edf7; /* old light blue - #F4F6FF */
-  --color-gold: #ebcf64;
+  --color-light-blue: #e3edf7;
   --color-light-gray: #f5f5f5;
 
   /* fonts → class: font-sans */
@@ -86,7 +84,7 @@
     appearance: none;
     width: 100%;
     height: 8px;
-    background: linear-gradient(to right, var(--color-gunmetal) 0%, var(--color-gunmetal) var(--value), #e5e7eb var(--value), #e5e7eb 100%);
+    background: linear-gradient(to right, var(--color-navy) 0%, var(--color-navy) var(--value), #e5e7eb var(--value), #e5e7eb 100%);
     border-radius: 4px;
     outline: none;
 }
@@ -96,7 +94,7 @@
     appearance: none;
     width: 24px;
     height: 24px;
-    background: var(--color-gunmetal);
+    background: var(--color-navy);
     border-radius: 50%;
     cursor: pointer;
 }
