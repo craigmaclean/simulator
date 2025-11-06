@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   summaryCardDeepDive: {
     flex: 1,
-    backgroundColor: '#1a3282',
+    backgroundColor: '#253042',
     padding: 16,
     borderRadius: 8,
     textAlign: 'center',
@@ -350,31 +350,31 @@ export default function ReportPDF({ simulation }) {
         {/* Row 1 */}
         <View style={styles.summaryRow}>
           <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>Current Revenue</Text>
+            <Text style={styles.summaryLabel}>CURRENT REVENUE</Text>
             <Text style={styles.summaryValue}>{formatCurrency(simulation.currentRevenue)}</Text>
           </View>
           <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>Current Profit</Text>
-            <Text style={styles.summaryValue}>{formatCurrency(simulation.currentProfit)}</Text>
+            <Text style={styles.summaryLabel}>PROJECTED REVENUE{"\n"}INCREASE</Text>
+            <Text style={styles.summaryValue}>{formatCurrency(simulation.table_one_revenue_increase)}</Text>
           </View>
           <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>Expected Revenue Increase</Text>
-            <Text style={styles.summaryValue}>{formatCurrency(simulation.table_one_revenue_increase)}</Text>
+            <Text style={styles.summaryLabel}>PROJECTED 5-YEAR{"\n"}REVENUE INCREASE</Text>
+            <Text style={styles.summaryValue}>{formatCurrency(simulation.table_one_revenue_increase * 5)}</Text>
           </View>
         </View>
 
         {/* Row 2 */}
         <View style={styles.summaryRow}>
           <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>Expected Annual Gross Revenue</Text>
-            <Text style={styles.summaryValue}>{formatCurrency(simulation.expectedRevenue)}</Text>
+            <Text style={styles.summaryLabel}>CURRENT NET PROFIT</Text>
+            <Text style={styles.summaryValue}>{formatCurrency(simulation.currentProfit)}</Text>
           </View>
           <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>Expected Net Profit Increase</Text>
+            <Text style={styles.summaryLabel}>PROJECTED PROFIT INCREASE</Text>
             <Text style={styles.summaryValue}>{formatCurrency(simulation.table_one_profit_increase)}</Text>
           </View>
           <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>Expected 5-Year Net Profit Impact</Text>
+            <Text style={styles.summaryLabel}>PROJECTED 5-YEAR{"\n"}NET PROFIT INCREASE</Text>
             <Text style={styles.summaryValue}>{formatCurrency(simulation.tableOneFiveYear)}</Text>
           </View>
         </View>
@@ -384,17 +384,17 @@ export default function ReportPDF({ simulation }) {
           <>
             <View style={styles.summaryRow}>
               <View style={styles.summaryCardDeepDive}>
-                <Text style={styles.summaryLabelDeepDive}>Expected DD40 Revenue Increase</Text>
+                <Text style={styles.summaryLabelDeepDive}>PROJECTED DD40{"\n"}REVENUE INCREASE</Text>
                 <Text style={styles.summaryValueDeepDive}>{formatCurrency(simulation.deep_dive_revenue_increase)}</Text>
               </View>
               <View style={styles.summaryCardDeepDive}>
-                <Text style={styles.summaryLabelDeepDive}>Expected DD40 Annual Profit</Text>
+                <Text style={styles.summaryLabelDeepDive}>PROJECTED DD40{"\n"}ANNUAL PROFIT</Text>
                 <Text style={styles.summaryValueDeepDive}>
                   {formatCurrency(simulation.currentProfit + simulation.table_one_profit_increase + simulation.deep_dive_profit_increase)}
                 </Text>
               </View>
               <View style={styles.summaryCardDeepDive}>
-                <Text style={styles.summaryLabelDeepDive}>Expected DD40 5-Year Profit Impact</Text>
+                <Text style={styles.summaryLabelDeepDive}>PROJECTED DD40{"\n"}5-YEAR PROFIT IMPACT</Text>
                 <Text style={styles.summaryValueDeepDive}>
                   {formatCurrency((simulation.table_one_profit_increase + simulation.deep_dive_profit_increase) * 5)}
                 </Text>

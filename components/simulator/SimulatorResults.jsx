@@ -7,7 +7,7 @@ export default function SimulatorResults({ results, currency }) {
   const resultItems = [
     { label: 'CURRENT REVENUE', value: formatCurrency(results.currentRevenue, currency) },
     { label: 'PROJECTED REVENUE INCREASE', value: formatCurrency(results.revenueIncrease, currency) },
-    { label: 'PROJECTED 5-YEAR REVENUE INCREASE', value: formatCurrency(results.expectedRevenue, currency) },
+    { label: 'PROJECTED 5-YEAR REVENUE INCREASE', value: formatCurrency(results.projectedFiveYearRevenueIncrease, currency) },
     { label: 'CURRENT NET PROFIT', value: formatCurrency(results.currentProfit, currency) },
     { label: 'PROJECTED PROFIT INCREASE', value: formatCurrency(results.profitIncrease, currency) },
     { label: 'PROJECTED 5-YEAR NET PROFIT INCREASE', value: formatCurrency(results.fiveYearImpact, currency) }
