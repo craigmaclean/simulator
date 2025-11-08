@@ -86,16 +86,22 @@ export default function Simulator({ onFormSnapshot, onCalculationResults, onOpen
   return (
     <section id="simulator" className="py-16">
       <div className="px-4 mx-auto max-w-7xl">
-        <h2 className="mb-0 font-bold text-center leading-h2 text-h2-mobile md:text-h2-tablet lg:text-h2 text-gray-900 md:mb-12">
+        <h2 className="mb-0 font-bold text-center leading-h2 text-h2-mobile md:text-h2-tablet lg:text-h2 text-gray-900 md:mb-0">
           Profit Acceleration Simulator
         </h2>
 
-        <div className="p-8 mb-8 bg-white rounded-lg shadow-lg">
+        <div className="p-8 mb-4 bg-white rounded-lg shadow-lg">
           <SimulatorInputPanel formData={formData} onChange={handleInputChange} />
           <ImpactSlider
             value={formData.globalImpact}
             onChange={handleSliderChange}
             label="Set % Impact Across All Areas"
+            tooltipContent={
+                            <>
+                              <p className="font-semibold mb-2">If you want to double your profits, you may only need a 1.4% increase in each of the 12 areas.</p>
+                              <p>If you don't know your margins, use 50% for gross margin and 10% for net margin.</p>
+                            </>
+                          }
           />
         </div>
 
