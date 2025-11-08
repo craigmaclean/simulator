@@ -65,7 +65,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
         const rounded = Math.round(value * 100) / 100;
         const maxValue = Math.min(rounded, 100);
 
-        // ✅ Additional validation for netMargin
+        // Additional validation for netMargin
         if (fieldName === 'netMargin') {
           // If net margin exceeds gross margin, cap it at gross margin
           const cappedValue = Math.min(maxValue, formData.grossMargin);
@@ -161,7 +161,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             inputMode="decimal"
             min={0}
             max={100}
-            step="0.01"
+            step="1.00"
             value={formData.grossMargin}
             onChange={handlePercentageChange('grossMargin')}
             onBlur={handlePercentageBlur('grossMargin')}
@@ -196,7 +196,7 @@ export default function SimulatorInputPanel({ formData, onChange }) {
             inputMode="decimal"
             min={0}
             max={100}
-            step="0.01"
+            step="1.00"
             value={formData.netMargin}
             onChange={handlePercentageChange('netMargin')}
             onBlur={handlePercentageBlur('netMargin')}

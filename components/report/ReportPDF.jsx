@@ -1,14 +1,14 @@
 import { Document, Page, Text, View, StyleSheet, Svg, Circle, Path, Image } from '@react-pdf/renderer';
 import { STRATEGY_CONTENT } from '@/data/strategyContent';
 import { CURRENCIES } from '@/data/currencies';
-import  { COACH_FIRST_NAME, COACH_LAST_NAME, CALENDAR_URL } from '@/lib/constants';
+import  { COACH_FIRST_NAME, COACH_LAST_NAME, COACH_URL, CALENDAR_URL } from '@/lib/constants';
 
 // Register fonts if needed
 // Font.register({ family: 'YourFont', src: '/fonts/your-font.ttf' });
 
 const styles = StyleSheet.create({
   page: {
-    padding: 40,
+    padding: '20 40',
     fontSize: 11,
     fontFamily: 'Helvetica',
     backgroundColor: '#ffffff',
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
 
   // Header
   header: {
+    paddingTop: 20,
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: -5,
@@ -299,12 +300,20 @@ const styles = StyleSheet.create({
     bottom: 30,
     left: 40,
     right: 40,
-    textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     fontSize: 9,
     color: '#6b7280',
     borderTopWidth: 1,
     borderTopColor: '#e5e7eb',
     paddingTop: 10,
+  },
+  footerLeft: {
+    textAlign: 'left',
+  },
+  footerRight: {
+    textAlign: 'right',
   },
   pageNumber: {
     fontSize: 9,
@@ -401,6 +410,21 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
     };
   });
 
+  // Calculate total pages
+  const totalPages = (strategiesWithContent.length / 2) + 2; // +2 for summary page and CTA page
+
+  // Footer component
+  const Footer = ({ pageNumber }) => (
+    <View style={styles.footer} fixed>
+      <Text style={styles.footerLeft}>
+        © {new Date().getFullYear()} Profit Acceleration Software™ | Page {pageNumber} of {totalPages}
+      </Text>
+      <Text style={styles.footerRight}>
+        {COACH_URL}
+      </Text>
+    </View>
+  );
+
   const hasDeepDive = simulation.completed_deep_dive && simulation.deep_dive_profit_increase;
 
   return (
@@ -494,6 +518,8 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
             </View>
           </>
         )}
+
+        <Footer pageNumber={1} />
       </Page>
 
       {/* Strategy Pages - 2 strategies per page */}
@@ -505,86 +531,84 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
           <Page key={`strategy-page-${pageIndex}`} size="LETTER" style={styles.page}>
             {strategiesOnPage.map((strategy, strategyIndex) => (
               <View key={strategy.id} style={strategyIndex % 2 === 0 ? styles.strategySection : styles.strategySectionAlt}>
-                  <View style={styles.strategyContent}>
-                    <Text style={styles.strategyTitle}>{strategy.strategySectionTitle}</Text>
-                    <Text style={styles.strategySubtitle}>{strategy.actionSteps}</Text>
+                <View style={styles.strategyContent}>
+                  <Text style={styles.strategyTitle}>{strategy.strategySectionTitle}</Text>
+                  <Text style={styles.strategySubtitle}>{strategy.actionSteps}</Text>
 
-                    <View style={styles.actionStepsList}>
-                      {strategy.actionStepsList && strategy.actionStepsList.map((step, idx) => (
-                        <View key={idx} style={styles.actionStepItem}>
-                          <View style={styles.checkmark}>
-                            <Svg style={styles.checkmarkSvg} viewBox="0 0 24 24">
-                              <Circle
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                fill="#4169E1"
-                                stroke="#4169E1"
-                                strokeWidth="2"
-                              />
-                              <Path
-                                d="m9 12 2 2 4-4"
-                                fill="none"
-                                stroke="white"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </Svg>
-                          </View>
-                          <Text style={styles.actionStepText}>{step}</Text>
+                  <View style={styles.actionStepsList}>
+                    {strategy.actionStepsList && strategy.actionStepsList.map((step, idx) => (
+                      <View key={idx} style={styles.actionStepItem}>
+                        <View style={styles.checkmark}>
+                          <Svg style={styles.checkmarkSvg} viewBox="0 0 24 24">
+                            <Circle
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              fill="#4169E1"
+                              stroke="#4169E1"
+                              strokeWidth="2"
+                            />
+                            <Path
+                              d="m9 12 2 2 4-4"
+                              fill="none"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </Svg>
                         </View>
-                      ))}
-                    </View>
-                  </View>
-
-                  <View style={styles.strategyMetrics}>
-                    {/* Revenue Table */}
-                    <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
-                      <View style={styles.strategyTableRow}>
-                        <View style={styles.strategyTableHeader}>
-                          <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
-                          <Text style={styles.strategyTableHeaderTextBold}>Revenue</Text>
-                        </View>
+                        <Text style={styles.actionStepText}>{step}</Text>
                       </View>
-                      <View style={styles.strategyTableRow}>
-                        <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
-                          <Text style={styles.strategyTableCellText}>
-                            {strategy.revenueIncreasePercent.toFixed(1)}% / {formatCurrency(strategy.revenueIncreaseAmount)}
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-
-                    {/* Profit Table */}
-                    <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
-                      <View style={styles.strategyTableRow}>
-                        <View style={styles.strategyTableHeader}>
-                          <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
-                          <Text style={styles.strategyTableHeaderTextBold}>Profit</Text>
-                        </View>
-                      </View>
-                      <View style={styles.strategyTableRow}>
-                        <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
-                          <Text style={styles.strategyTableCellText}>
-                            {strategy.profitIncreasePercent.toFixed(1)}% / {formatCurrency(strategy.profitIncreaseAmount)}
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-
-                    {/* CTA Box */}
-                    <View style={styles.strategyCtaBox}>
-                      <Text style={styles.strategyCtaTitle}>WANT HELP WITH THIS?</Text>
-                      <Text style={styles.strategyCtaText}>See the final page to book your strategy call.</Text>
-                    </View>
+                    ))}
                   </View>
                 </View>
+
+                <View style={styles.strategyMetrics}>
+                  {/* Revenue Table */}
+                  <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
+                    <View style={styles.strategyTableRow}>
+                      <View style={styles.strategyTableHeader}>
+                        <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
+                        <Text style={styles.strategyTableHeaderTextBold}>Revenue</Text>
+                      </View>
+                    </View>
+                    <View style={styles.strategyTableRow}>
+                      <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
+                        <Text style={styles.strategyTableCellText}>
+                          {strategy.revenueIncreasePercent.toFixed(1)}% / {formatCurrency(strategy.revenueIncreaseAmount)}
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+
+                  {/* Profit Table */}
+                  <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
+                    <View style={styles.strategyTableRow}>
+                      <View style={styles.strategyTableHeader}>
+                        <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
+                        <Text style={styles.strategyTableHeaderTextBold}>Profit</Text>
+                      </View>
+                    </View>
+                    <View style={styles.strategyTableRow}>
+                      <View style={strategyIndex % 2 === 0 ? styles.strategyTableCellAlt : styles.strategyTableCell}>
+                        <Text style={styles.strategyTableCellText}>
+                          {strategy.profitIncreasePercent.toFixed(1)}% / {formatCurrency(strategy.profitIncreaseAmount)}
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+
+                  {/* CTA Box */}
+                  <View style={styles.strategyCtaBox}>
+                    <Text style={styles.strategyCtaTitle}>WANT HELP WITH THIS?</Text>
+                    <Text style={styles.strategyCtaText}>Book a Profit Acceleration Session - see final page</Text>
+                  </View>
+                </View>
+              </View>
             ))}
 
-            <Text style={styles.footer}>
-              © {new Date().getFullYear()} Profit Acceleration Software™ | Page {pageIndex + 2} of {Math.ceil(strategiesWithContent.length / 2) + 1}
-            </Text>
+            <Footer pageNumber={pageIndex + 2} />
           </Page>
         );
       })}
@@ -619,6 +643,7 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
             </View>
           </View>
         </View>
+        <Footer pageNumber={totalPages} />
       </Page>
     </Document>
   );
