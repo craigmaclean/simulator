@@ -5,25 +5,79 @@ import { ArrowDownToLine, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { pdf } from '@react-pdf/renderer';
 import ReportPDF from './ReportPDF';
+import qrcode from 'qrcode-generator';
+import  { COACH_FIRST_NAME, COACH_LAST_NAME, CALENDAR_URL } from '@/lib/constants';
 
 export default function DownloadReportButton({ simulation }) {
   const [isGenerating, setIsGenerating] = useState(false);
+
+  const generateQRCodeDataURL = (text) => {
+    // Validation
+    if (!text || typeof text !== 'string') {
+      console.error('Invalid text for QR code:', text);
+      return null;
+    }
+
+    // Create QR code with typeNumber 4 and error correction level M
+    const qr = qrcode(4, 'M');
+    qr.addData(text);
+    qr.make();
+
+    const cellSize = 8;
+    const margin = 4;
+    const size = qr.getModuleCount();
+    const canvasSize = size * cellSize + margin * 2 * cellSize;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = canvasSize;
+    canvas.height = canvasSize;
+    const ctx = canvas.getContext('2d');
+
+    // White background
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvasSize, canvasSize);
+
+    // Draw QR code
+    ctx.fillStyle = '#1e3a8a';
+    for (let row = 0; row < size; row++) {
+      for (let col = 0; col < size; col++) {
+        if (qr.isDark(row, col)) {
+          ctx.fillRect(
+            col * cellSize + margin * cellSize,
+            row * cellSize + margin * cellSize,
+            cellSize,
+            cellSize
+          );
+        }
+      }
+    }
+
+    return canvas.toDataURL('image/png');
+  };
 
   const handleDownload = async () => {
     setIsGenerating(true);
 
     try {
-      // Generate PDF blob
-      const blob = await pdf(<ReportPDF simulation={simulation} />).toBlob();
+      // Generate QR code from CONST
+      const qrCodeDataUrl = generateQRCodeDataURL(CALENDAR_URL);
 
-      // Create download link
+      // Generate PDF with QR code
+      const blob = await pdf(
+        <ReportPDF
+          simulation={simulation}
+          calendarUrl={CALENDAR_URL}
+          qrCodeDataUrl={qrCodeDataUrl}
+        />
+      ).toBlob();
+
+      // Download
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       link.download = `profit-acceleration-report-${simulation.id}.pdf`;
       link.click();
 
-      // Cleanup
       URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error generating PDF:', error);
@@ -34,6 +88,7 @@ export default function DownloadReportButton({ simulation }) {
   };
 
   return (
+
     <Button
       onClick={handleDownload}
       disabled={isGenerating}
@@ -55,5 +110,6 @@ export default function DownloadReportButton({ simulation }) {
         )}
       </div>
     </Button>
+
   );
 }

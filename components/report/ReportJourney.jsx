@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import  { COACH_FIRST_NAME, COACH_LAST_NAME, CALENDAR_URL } from '@/lib/constants';
 
 export default function ReportJourney() {
   return (
@@ -23,7 +24,7 @@ export default function ReportJourney() {
                 I&apos;ll outline major strategies you should follow and the impact to be made. Click on the strategies below to jump to the step.
               </p>
               <p className="leading-relaxed text-gray-800 text-body italic">
-                - [COACH NAME], Your Profit Acceleration Specialist
+                - {COACH_FIRST_NAME} {COACH_LAST_NAME}, Your Profit Acceleration Specialist
               </p>
             </div>
           </div>

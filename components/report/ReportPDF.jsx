@@ -1,6 +1,7 @@
-import { Document, Page, Text, View, StyleSheet, Svg, Circle, Path } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Svg, Circle, Path, Image } from '@react-pdf/renderer';
 import { STRATEGY_CONTENT } from '@/data/strategyContent';
 import { CURRENCIES } from '@/data/currencies';
+import  { COACH_FIRST_NAME, COACH_LAST_NAME, CALENDAR_URL } from '@/lib/constants';
 
 // Register fonts if needed
 // Font.register({ family: 'YourFont', src: '/fonts/your-font.ttf' });
@@ -129,13 +130,16 @@ const styles = StyleSheet.create({
   // Strategy Section
   strategySection: {
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 0,
     flexDirection: 'row',
     gap: 20,
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 8,
   },
   strategySectionAlt: {
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 0,
     flexDirection: 'row',
     gap: 20,
     backgroundColor: '#f5f5f5',
@@ -147,7 +151,7 @@ const styles = StyleSheet.create({
   },
   strategyMetrics: {
     flex: 1,
-    marginTop: 20,
+    marginTop: 16,
   },
   strategyTitle: {
     fontSize: 20,
@@ -159,6 +163,27 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+
+  // CTA Box styles
+  strategyCtaBox: {
+    backgroundColor: '#4169e1',
+    padding: 10,
+    borderRadius: 6,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  strategyCtaTitle: {
+    fontSize: 11,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginBottom: 5,
+    letterSpacing: 0.5,
+  },
+  strategyCtaText: {
+    fontSize: 8,
+    color: '#ffffff',
+    lineHeight: 1.3,
   },
 
   // Action Steps List
@@ -285,9 +310,73 @@ const styles = StyleSheet.create({
     fontSize: 9,
     color: '#6b7280',
   },
+
+  // CTA Box styles
+  ctaBox: {
+    backgroundColor: '#e3edf7',
+    padding: 20,
+    borderRadius: 8,
+    marginTop: 40,
+  },
+  ctaTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#1e3a8a', // navy
+    marginBottom: 20,
+    textAlign: 'left',
+  },
+  ctaContent: {
+    flexDirection: 'row',
+    gap: 30,
+    alignItems: 'center',
+  },
+  ctaLeft: {
+    width: 120,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  qrCodePlaceholder: {
+    width: 120,
+    height: 120,
+    backgroundColor: '#d1d5db',
+    borderRadius: 4,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  qrCode: {
+    width: 120,
+    height: 120,
+  },
+  qrCodePlaceholderText: {
+    fontSize: 10,
+    color: '#6b7280',
+  },
+  ctaRight: {
+    flex: 1,
+  },
+  ctaText: {
+    fontSize: 12,
+    color: '#374151',
+    marginBottom: 16,
+    lineHeight: 1.6,
+    textAlign: 'left',
+  },
+  ctaUrl: {
+    fontSize: 11,
+    color: '#3b82f6',
+    textDecoration: 'underline',
+  },
+
+
+  // MISC
+  bold: {
+    fontWeight: 'bold',
+  },
+
 });
 
-export default function ReportPDF({ simulation }) {
+export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
   const formatCurrency = (value) => {
     const currency = CURRENCIES.find(c => c.code === simulation.currency);
     const symbol = currency ? currency.symbol : '$';
@@ -343,7 +432,7 @@ export default function ReportPDF({ simulation }) {
           </Text>
 
           <Text style={styles.journeySignature}>
-            - [COACH NAME], Your Profit Acceleration Specialist
+            - {COACH_FIRST_NAME} {COACH_LAST_NAME}, Your Profit Acceleration Specialist
           </Text>
         </View>
 
@@ -483,6 +572,12 @@ export default function ReportPDF({ simulation }) {
                         </View>
                       </View>
                     </View>
+
+                    {/* CTA Box */}
+                    <View style={styles.strategyCtaBox}>
+                      <Text style={styles.strategyCtaTitle}>WANT HELP WITH THIS?</Text>
+                      <Text style={styles.strategyCtaText}>See the final page to book your strategy call.</Text>
+                    </View>
                   </View>
                 </View>
             ))}
@@ -493,6 +588,38 @@ export default function ReportPDF({ simulation }) {
           </Page>
         );
       })}
+
+      {/* Last Page: CTA Box */}
+      <Page size="LETTER" style={styles.page}>
+        <View style={styles.ctaBox}>
+          <View style={styles.ctaContent}>
+            <View style={styles.ctaLeft}>
+              {qrCodeDataUrl ? (
+                <Image src={qrCodeDataUrl} style={styles.qrCode} />
+              ) : (
+                <View style={styles.qrCodePlaceholder}>
+                  <Text style={styles.qrCodePlaceholderText}>QR Code</Text>
+                </View>
+              )}
+            </View>
+
+            <View style={styles.ctaRight}>
+              <Text style={styles.ctaTitle}>Ready To Get Started?</Text>
+
+              <Text style={styles.ctaText}>
+                During our strategy call, we'll review this report, dive deeper to learn how we can further accelerate your growth, and I'll also provide personalized guidance for your journey.
+              </Text>
+
+              <Text style={styles.ctaText}>
+                Book your call, here:{"\n"}
+                <Text style={styles.bold}>
+                  {CALENDAR_URL}
+                </Text>
+              </Text>
+            </View>
+          </View>
+        </View>
+      </Page>
     </Document>
   );
 }

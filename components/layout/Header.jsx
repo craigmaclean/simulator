@@ -27,9 +27,9 @@ export default function Header() {
                 <nav className="items-center hidden space-x-6 md:flex">
                   {/*<a href="/" className="text-base text-gray-600 hover:text-navy">HOME</a>*/}
 
-                  <Link href="#jumpstart-12" scroll={false} className="text-base text-gray-800 hover:text-navy">
+                  <LinkToSection href="/#jumpstart-12" scroll={false} className="text-base text-gray-800 hover:text-navy">
                   JUMPSTART 12
-                  </Link>
+                  </LinkToSection>
                   <LinkToSection href="/#simulator">
                       <CtaButton variant="primary" className="!px-6 !py-2 !mb-0">Run The Simulator</CtaButton>
                   </LinkToSection>
