@@ -25,10 +25,13 @@ export default function StrategyTable({
     onStrategyChange(actualIndex, next);
   };
 
+  const hideOnMobile = startIndex === 6;
+
   return (
     <div className="overflow-x-auto">
       <Table className="w-full table-fixed">
-        <TableHeader>
+        {/* if index starts at 6, hide TableHeader */}
+        <TableHeader className={hideOnMobile ? 'hidden lg:table-header-group' : ''}>
             <TableRow className="bg-navy hover:bg-navy">
             <TableHead className="px-2 py-3 text-xs text-left text-white text-wrap sm:text-base sm:px-4 w-[40%] sm:w-auto">
                 AREA
@@ -66,30 +69,37 @@ export default function StrategyTable({
 
             return (
                 <TableRow key={actualIndex} className={zebra}>
-                <TableCell className="text-gray-800 px-2 py-2 text-sm leading-tight break-words border-b sm:text-base sm:px-4" style={{ textWrap: "auto" }}>{strategy.name}</TableCell>
 
-                <TableCell className="px-2 py-2 border-b sm:px-4">
-                    <div className="flex items-center justify-center gap-1">
-                    <Input
-                        type="number"
-                        inputMode="decimal"
-                        min={0}
-                        max={10}
-                        step={0.1}
-                        value={strategy.impact}
-                        onChange={(e) => handleChange(actualIndex, e)}
-                        onFocus={(e) => e.target.select()}
-                        onWheel={(e) => e.currentTarget.blur()}
-                        aria-label={`${strategy.name} impact percent`}
-                        className="text-sm text-right impact-input w-14 sm:w-20 sm:text-base"
-                    />
-                    <span className="text-sm text-gray-500 sm:text-base">%</span>
-                    </div>
-                </TableCell>
+                  {/*
+                    * Defined widths here for xs devices.
+                    * Widths defined above on TableHead, but no longer exist there if hidden on xs.
+                    */
+                  }
 
-                <TableCell className="text-gray-800 px-2 py-2 text-sm text-right border-b sm:px-4 sm:text-base whitespace-nowrap">
-                    {formatCurrency(strategy.profitIncrease || 0, currency)}
-                </TableCell>
+                  <TableCell className="text-gray-800 px-2 py-2 text-sm leading-tight break-words border-b sm:text-base sm:px-4 w-[40%] sm:w-auto" style={{ textWrap: "auto" }}>{strategy.name}</TableCell>
+
+                  <TableCell className="px-2 py-2 border-b sm:px-4 w-[30%] sm:w-auto">
+                      <div className="flex items-center justify-center gap-1">
+                      <Input
+                          type="number"
+                          inputMode="decimal"
+                          min={0}
+                          max={10}
+                          step={0.1}
+                          value={strategy.impact}
+                          onChange={(e) => handleChange(actualIndex, e)}
+                          onFocus={(e) => e.target.select()}
+                          onWheel={(e) => e.currentTarget.blur()}
+                          aria-label={`${strategy.name} impact percent`}
+                          className="text-sm text-right impact-input w-14 sm:w-20 sm:text-base"
+                      />
+                      <span className="text-sm text-gray-500 sm:text-base">%</span>
+                      </div>
+                  </TableCell>
+
+                  <TableCell className="text-gray-800 px-2 py-2 text-sm text-right border-b sm:px-4 sm:text-base whitespace-nowrap w-[30%] sm:w-auto">
+                      {formatCurrency(strategy.profitIncrease || 0, currency)}
+                  </TableCell>
                 </TableRow>
             );
             })}

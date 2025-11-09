@@ -8,7 +8,7 @@ export default function StrategyTables({ strategies, onStrategyChange, currency 
 
   return (
     <div className="mb-8 bg-white rounded-lg shadow-lg sm:p-8">
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 sm:gap-8">
+      <div className="grid grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-8">
         <StrategyTable
           strategies={leftStrategies}
           onStrategyChange={onStrategyChange}

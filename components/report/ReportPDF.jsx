@@ -410,8 +410,8 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
     };
   });
 
-  // Calculate total pages
-  const totalPages = (strategiesWithContent.length / 2) + 2; // +2 for summary page and CTA page
+  // Calculate total pages - (# of strategies (12) / 2) + 2 pages (title and final pages)
+  const totalPages = (strategiesWithContent.length / 2) + 2;
 
   // Footer component
   const Footer = ({ pageNumber }) => (
