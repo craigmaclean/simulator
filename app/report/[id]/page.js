@@ -28,13 +28,33 @@ export default async function ReportPage({ params }) {
       actionStepsList: [],
     };
 
+    // Calculate base for profit percentage
+    const grossProfit = simulation.annual_revenue * (simulation.gross_profit_margin / 100);
+    const netProfit = simulation.annual_revenue * (simulation.net_profit_margin / 100);
+
+    // Get cumulative profit from first 4 strategies for "Increase Prices"
+    const cumulativeProfitForPricing = simulation.table_one_strategies
+      .slice(0, 4) // First 4 strategies
+      .reduce((sum, s) => sum + (s.profit_increase || 0), netProfit);
+
+    let profitBase;
+    if (strategy.id === 'cut-costs' ||
+        strategy.id === 'market-dominating-position' ||
+        strategy.id === 'compelling-offer') {
+      profitBase = netProfit;
+    } else if (strategy.id === 'increase-prices') {
+      profitBase = cumulativeProfitForPricing; // net + first 3 strategies
+    } else {
+      profitBase = grossProfit;
+    }
+
     return {
       id: strategy.id,
       ...content,
       // Keeping these as precise numbers, will format only when displaying
-      revenueIncreasePercent: (strategy.profit_increase / simulation.annual_revenue) * 100,
-      revenueIncreaseAmount: strategy.profit_increase,
-      profitIncreasePercent: (strategy.profit_increase / simulation.currentProfit) * 100,
+      revenueIncreasePercent: (strategy.revenue_increase / simulation.annual_revenue) * 100,
+      revenueIncreaseAmount: strategy.revenue_increase,
+      profitIncreasePercent: (strategy.profit_increase / profitBase) * 100,
       profitIncreaseAmount: strategy.profit_increase,
     };
   });
