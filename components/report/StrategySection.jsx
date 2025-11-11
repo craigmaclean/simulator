@@ -84,11 +84,11 @@ export default function StrategySection({ strategyData, isReversed = false, curr
               <thead>
                 <tr>
                   <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r">
-                    <span className="block font-medium -m-0.5">Expected Increase In</span>
+                    <span className="block font-medium -m-0.5">Projected Increase In</span>
                     <span className="block font-bold text-lg">Revenue</span>
                   </th>
                   <th className="w-1/2 px-6 py-4 border-b border-gray-300">
-                    <span className="block text-gray-900 font-medium uppercase -m-0.5">Expected Increase In</span>
+                    <span className="block text-gray-900 font-medium uppercase -m-0.5">Projected Increase In</span>
                     <span className="block text-gray-900 font-bold text-lg">Profit</span>
                   </th>
                 </tr>
@@ -149,11 +149,11 @@ export default function StrategySection({ strategyData, isReversed = false, curr
                     <thead>
                       <tr>
                         <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r">
-                          <span className="block font-medium -m-0.5">Expected Increase In</span>
+                          <span className="block font-medium -m-0.5">Projected Increase In</span>
                           <span className="block font-bold text-lg">Revenue</span>
                         </th>
                         <th className="w-1/2 px-6 py-4 border-b border-gray-300">
-                          <span className="block text-gray-900 font-medium uppercase -m-0.5">Expected Increase In</span>
+                          <span className="block text-gray-900 font-medium uppercase -m-0.5">Projected Increase In</span>
                           <span className="block text-gray-900 font-bold text-lg">Profit</span>
                         </th>
                       </tr>
@@ -258,11 +258,11 @@ export default function StrategySection({ strategyData, isReversed = false, curr
                     <thead>
                       <tr>
                         <th className="w-1/2 px-6 py-4 border-b border-gray-300 border-r">
-                          <span className="block font-medium -m-0.5">Expected Increase In</span>
+                          <span className="block font-medium -m-0.5">Projected Increase In</span>
                           <span className="block font-bold text-lg">Revenue</span>
                         </th>
                         <th className="w-1/2 px-6 py-4 border-b border-gray-300">
-                          <span className="block text-gray-900 font-medium uppercase -m-0.5">Expected Increase In</span>
+                          <span className="block text-gray-900 font-medium uppercase -m-0.5">Projected Increase In</span>
                           <span className="block text-gray-900 font-bold text-lg">Profit</span>
                         </th>
                       </tr>

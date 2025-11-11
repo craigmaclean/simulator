@@ -20,41 +20,31 @@ export default async function ReportPage({ params }) {
   }
 
   // Prepare all strategy data
-  const strategiesWithContent = simulation.table_one_strategies.map((strategy) => {
-    // Get video/action steps content
+  const strategiesWithContent = simulation.table_one_strategies.map((strategy, index) => {
     const content = STRATEGY_CONTENT[strategy.id] || {
       cardTitle: strategy.name,
       actionSteps: `Here are your ${strategy.name.toLowerCase()} action steps:`,
       actionStepsList: [],
     };
 
-    // Calculate base for profit percentage
-    const grossProfit = simulation.annual_revenue * (simulation.gross_profit_margin / 100);
+    // Calculate cumulative profit base for this strategy
     const netProfit = simulation.annual_revenue * (simulation.net_profit_margin / 100);
 
-    // Get cumulative profit from first 4 strategies for "Increase Prices"
-    const cumulativeProfitForPricing = simulation.table_one_strategies
-      .slice(0, 4) // First 4 strategies
-      .reduce((sum, s) => sum + (s.profit_increase || 0), netProfit);
+    // Sum of all previous strategies' profit increases
+    const previousProfitSum = simulation.table_one_strategies
+      .slice(0, index) // All strategies before this one
+      .reduce((sum, s) => sum + (s.profit_increase || 0), 0);
 
-    let profitBase;
-    if (strategy.id === 'cut-costs' ||
-        strategy.id === 'market-dominating-position' ||
-        strategy.id === 'compelling-offer') {
-      profitBase = netProfit;
-    } else if (strategy.id === 'increase-prices') {
-      profitBase = cumulativeProfitForPricing; // net + first 3 strategies
-    } else {
-      profitBase = grossProfit;
-    }
+    const profitBase = netProfit + previousProfitSum;
 
     return {
       id: strategy.id,
       ...content,
-      // Keeping these as precise numbers, will format only when displaying
-      revenueIncreasePercent: (strategy.revenue_increase / simulation.annual_revenue) * 100,
+      // Revenue calculations
+      revenueIncreasePercent: Math.round((strategy.revenue_increase / simulation.annual_revenue) * 100),
       revenueIncreaseAmount: strategy.revenue_increase,
-      profitIncreasePercent: (strategy.profit_increase / profitBase) * 100,
+      // Profit calculations - using cumulative base
+      profitIncreasePercent: Math.round((strategy.profit_increase / profitBase) * 100),
       profitIncreaseAmount: strategy.profit_increase,
     };
   });

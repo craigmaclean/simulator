@@ -6,6 +6,21 @@ import { calculateResults } from "@/lib/calc/calculateResults";
 import { calculateDeepDive } from "@/lib/calc/calculateDeepDive";
 import { STRATEGIES_12, STRATEGIES_DEEPDIVE } from "@/data/strategies";
 import CtaButton from "../shared/CtaButton";
+import { formatCurrency } from "@/utils/formatters";
+
+function SummaryCard({ label, value, currency }) {
+  return (
+    <div className="p-6 text-center rounded-lg bg-light-gray transform transition duration-300 hover:scale-105">
+      <h3 className="text-[1rem] font-semibold text-gray-600 mb-2 tracking-tight">
+        {label}
+      </h3>
+      <p className="text-[2rem] font-semibold text-gray-900 tracking-wide">
+        {formatCurrency(Math.round(value), currency)}
+      </p>
+    </div>
+  );
+}
+
 
 const DeepDive40 = forwardRef(function DeepDive40(
   { show, currency, revenue, grossMargin, netMargin, globalImpact, onDeepDiveResults, onOpenReport = () => {} },
@@ -112,19 +127,3 @@ const DeepDive40 = forwardRef(function DeepDive40(
 });
 
 export default DeepDive40;
-
-function SummaryCard({ label, value, currency }) {
-  const symbols = { USD: "$", CAD: "CA$", EUR: "€", GBP: "£" };
-  const symbol = symbols[currency] || "$";
-  const display = `${symbol}${Math.round(value).toLocaleString("en-US")}`;
-  return (
-    <div className="p-6 text-center rounded-lg bg-light-gray transform transition duration-300 hover:scale-105">
-      <h3 className="text-[1rem] font-semibold text-gray-600 mb-2 tracking-tight">
-        {label}
-      </h3>
-      <p className="text-[2rem] font-semibold text-gray-900 tracking-wide">
-        {display}
-      </p>
-    </div>
-  );
-}

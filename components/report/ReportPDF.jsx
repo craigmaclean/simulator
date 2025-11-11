@@ -392,20 +392,32 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
     return `${symbol}${Math.round(value).toLocaleString('en-US')}`;
   };
 
-  // Get strategy content for each strategy
-  const strategiesWithContent = simulation.table_one_strategies.map((strategy) => {
+  // Prepare all strategy data
+  const strategiesWithContent = simulation.table_one_strategies.map((strategy, index) => {
     const content = STRATEGY_CONTENT[strategy.id] || {
-      strategySectionTitle: strategy.name,
+      cardTitle: strategy.name,
       actionSteps: `Here are your ${strategy.name.toLowerCase()} action steps:`,
       actionStepsList: [],
     };
 
+    // Calculate cumulative profit base for this strategy
+    const netProfit = simulation.annual_revenue * (simulation.net_profit_margin / 100);
+
+    // Sum of all previous strategies' profit increases
+    const previousProfitSum = simulation.table_one_strategies
+      .slice(0, index) // All strategies before this one
+      .reduce((sum, s) => sum + (s.profit_increase || 0), 0);
+
+    const profitBase = netProfit + previousProfitSum;
+
     return {
-      ...strategy,
+      id: strategy.id,
       ...content,
-      revenueIncreasePercent: (strategy.profit_increase / simulation.annual_revenue) * 100,
-      revenueIncreaseAmount: strategy.profit_increase,
-      profitIncreasePercent: (strategy.profit_increase / simulation.currentProfit) * 100,
+      // Revenue calculations
+      revenueIncreasePercent: Math.round((strategy.revenue_increase / simulation.annual_revenue) * 100),
+      revenueIncreaseAmount: strategy.revenue_increase,
+      // Profit calculations - using cumulative base
+      profitIncreasePercent: Math.round((strategy.profit_increase / profitBase) * 100),
       profitIncreaseAmount: strategy.profit_increase,
     };
   });
@@ -569,7 +581,7 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
                   <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
                     <View style={styles.strategyTableRow}>
                       <View style={styles.strategyTableHeader}>
-                        <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
+                        <Text style={styles.strategyTableHeaderText}>Projected Increase In</Text>
                         <Text style={styles.strategyTableHeaderTextBold}>Revenue</Text>
                       </View>
                     </View>
@@ -586,7 +598,7 @@ export default function ReportPDF({ simulation, calendarUrl, qrCodeDataUrl }) {
                   <View style={strategyIndex % 2 === 0 ? styles.strategyMetricsTable : styles.strategyMetricsTableAlt}>
                     <View style={styles.strategyTableRow}>
                       <View style={styles.strategyTableHeader}>
-                        <Text style={styles.strategyTableHeaderText}>Expected Increase In</Text>
+                        <Text style={styles.strategyTableHeaderText}>Projected Increase In</Text>
                         <Text style={styles.strategyTableHeaderTextBold}>Profit</Text>
                       </View>
                     </View>
