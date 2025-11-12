@@ -1,4 +1,9 @@
-// data/strategies.js
+/**
+ * strategies data file.
+ *
+ * JS12 and DD40 strategies data, including weighted multipliers
+ */
+
 export const STRATEGIES_12 = [
   {
     id: 'cut-costs',

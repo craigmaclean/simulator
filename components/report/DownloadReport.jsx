@@ -1,4 +1,11 @@
-import { ArrowDownToLine, CircleCheck } from 'lucide-react';
+/**
+ * DownloadReport - Server Component
+ *
+ * Section allowing user to download a PDF (CSR) of the report.
+ * It takes the simmulation data and passes it to DownloadReportButton component.
+ */
+
+import { CircleCheck } from 'lucide-react';
 import DownloadReportButton from './DownloadReportButton';
 
 export default function DownloadReport({ simulation }) {

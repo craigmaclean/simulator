@@ -1,3 +1,11 @@
+/**
+ * Report Page - Dynamic Route
+ *
+ * Displays the complete Profit Acceleration Roadmap for a specific simulation.
+ * Fetches simulation data from the database, combines it with strategy content,
+ * and renders all 12 strategy sections with action steps and profit projections.
+ */
+
 import Image from 'next/image';
 import { getSimulation } from '@/lib/db/saveSimulation';
 import { notFound } from 'next/navigation';

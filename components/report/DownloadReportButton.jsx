@@ -1,3 +1,11 @@
+/**
+ * DownloadReportButton - Client Component
+ *
+ * This component generates and downloads a PDF report of the simulation results.
+ * Generates a QR code linking to the calendar booking URL and embeds it in the PDF
+ * along with all strategy details, profit projections, and action steps.
+ */
+
 'use client';
 
 import { useState } from 'react';

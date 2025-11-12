@@ -1,3 +1,11 @@
+/**
+ * SimulatorInputPanel - Client Component
+ *
+ * Contains the child components for the primary user input fields - currency, annual revenue,
+ * gross profit margin %, net profit margin %. Utilizes a number of functions for data formatting
+ * and UX improvements.
+ */
+
 "use client";
 
 import { CURRENCIES } from '@/data/currencies';

@@ -1,10 +1,14 @@
+/**
+ * ProfitPotential - Server Component
+ *
+ * Displays the results of the simulation data.
+ * If DD40 was activated, it will display those results as well.
+ */
+
 import ReportSummaryResults from './ReportSummaryResults';
 
 export default function ProfitPotential({ simulation }) {
 
-  // ✅ DEBUG: See what's actually in simulation
-  console.log('Full simulation object:', simulation);
-  console.log('Keys:', Object.keys(simulation));
   // Prepare table one summary data
   const tableOneResults = {
     currentRevenue: simulation.currentRevenue,

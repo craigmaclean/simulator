@@ -1,3 +1,10 @@
+/**
+ * App Home Page - Client Component
+ *
+ * Displays the homepage for the Profit Acceleration Simulator, mainly using
+ * child components. Holds much of the state in the application.
+ */
+
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";

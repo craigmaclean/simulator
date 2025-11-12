@@ -1,6 +1,9 @@
-"use client";
+/**
+ * ImpactSlider - Server Component
+ *
+ * Contains the simulator impact slider and associated tooltip.
+ */
 
-import React from "react";
 import {
   Tooltip,
   TooltipContent,

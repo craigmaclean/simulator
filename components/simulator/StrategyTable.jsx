@@ -1,6 +1,9 @@
-"use client";
+/**
+ * StrategyTable - Server Component
+ *
+ * Individual tables containing strategy data (area/strategy name, % impact, profit increase).
+ */
 
-import React from "react";
 import { formatCurrency } from "../../utils/formatters";
 import { Input } from "../ui/input";
 import {

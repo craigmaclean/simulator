@@ -2,8 +2,8 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 
 export const metadata = {
-  title: "Profit Acceleration",
-  description: "Simulator and growth operating system",
+  title: "Profit Acceleration Software™ Simulator",
+  description: "Unlock the power of compounding growth in your business, through our Profit Acceleration Simulator.",
 };
 
 export default function RootLayout({ children }) {

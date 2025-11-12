@@ -1,6 +1,9 @@
-"use client";
+/**
+ * DeepDiveTables - Server Component
+ *
+ * Parent grid layout for DD40 strategy table data. Props passed to DeepDiveTable components.
+ */
 
-import React from "react";
 import DeepDiveTable from "@/components/simulator/DeepDiveTable";
 
 export default function DeepDiveTables({ rows, currency }) {

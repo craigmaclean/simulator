@@ -1,3 +1,9 @@
+/**
+ * DeepDiveTable - Server Component
+ *
+ * Individual tables containing DD40 strategy data (area/strategy name, profit increase).
+ */
+
 import { formatCurrency } from "@/utils/formatters";
 
 export default function DeepDiveTable({ rows, currency }) {

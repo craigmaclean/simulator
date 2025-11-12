@@ -1,3 +1,9 @@
+/**
+ * currencies data file.
+ *
+ * Available currencies in application.
+ */
+
 export const CURRENCIES = [
   { code: 'USD', label: 'US Dollar – $', symbol: '$' },
   { code: 'CAD', label: 'Canadian Dollar – CA$', symbol: 'CA$' },

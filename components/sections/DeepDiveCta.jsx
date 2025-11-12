@@ -1,3 +1,9 @@
+/**
+ * DeepDiveCta - Server Component
+ *
+ * CTA Section containing button component to activate dialog box.
+ */
+
 import CtaButton from "@/components/shared/CtaButton";
 
 export default function DeepDiveCta({

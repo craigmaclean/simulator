@@ -1,3 +1,8 @@
+/**
+ * Footer - Server Component
+ *
+ */
+
 export default function Footer() {
   const year = new Date().getFullYear();
 

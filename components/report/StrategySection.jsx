@@ -1,3 +1,11 @@
+/**
+ * StrategySection - Server Component
+ *
+ * Component that displays a single profit acceleration strategy on the report page.
+ * Renders strategy details, action steps, and expected revenue/profit increases in an
+ * alternating left-right layout pattern.
+ */
+
 import { CURRENCIES } from '@/data/currencies';
 import { CircleArrowDown, CircleCheck } from 'lucide-react';
 import ReportButton from "./ReportButton";

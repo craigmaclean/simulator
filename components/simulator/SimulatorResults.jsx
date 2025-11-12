@@ -1,7 +1,11 @@
-"use client";
+/**
+ * SimulatorResults - Server Component
+ *
+ * Parent grid layout for simulator result data. Props passed to SimulatorResult components.
+ */
 
 import SimulatorResult from '@/components/simulator/SimulatorResult';
-import { formatCurrency } from '../../utils/formatters';
+import { formatCurrency } from '@/utils/formatters';
 
 export default function SimulatorResults({ results, currency }) {
   const resultItems = [

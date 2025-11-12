@@ -1,4 +1,8 @@
-"use client";
+/**
+ * StrategyTables - Server Component
+ *
+ * Parent grid layout for strategy table data. Props passed to StrategyTable components.
+ */
 
 import StrategyTable from '@/components/simulator/StrategyTable';
 

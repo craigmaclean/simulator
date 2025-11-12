@@ -1,3 +1,17 @@
+/**
+ * ReportPDF
+ *
+ * PDF document component rendered client-side using @react-pdf/renderer.
+ * Generates a downloadable profit acceleration report with a report summary,
+ * all 12 strategy breakdowns with action steps, and a call-to-action page
+ * with embedded QR code for booking.
+ *
+ * The PDF contains:
+ * - Page 1: Report header, current/projected metrics, profit potential summary
+ * - Pages 2-7: Strategy pages (2 strategies per page) with action steps and projections
+ * - Final Page: Call-to-action with QR code linking to calendar booking URL
+ */
+
 import { Document, Page, Text, View, StyleSheet, Svg, Circle, Path, Image } from '@react-pdf/renderer';
 import { STRATEGY_CONTENT } from '@/data/strategyContent';
 import { CURRENCIES } from '@/data/currencies';

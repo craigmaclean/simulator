@@ -1,3 +1,10 @@
+/**
+ * DeepDive40 - Client Component
+ *
+ * Contain DD40 Strategy Tables, and DD40 Simulator Results - via child components.
+ * Becomes visible if the 'DEEP DIVE YOUR PROFITS FURTHER' button is selected.
+ */
+
 "use client";
 
 import React, { forwardRef, useMemo, useEffect } from "react";
@@ -5,7 +12,7 @@ import DeepDiveTables from "@/components/simulator/DeepDiveTables";
 import { calculateResults } from "@/lib/calc/calculateResults";
 import { calculateDeepDive } from "@/lib/calc/calculateDeepDive";
 import { STRATEGIES_12, STRATEGIES_DEEPDIVE } from "@/data/strategies";
-import CtaButton from "../shared/CtaButton";
+import CtaButton from "@/components/shared/CtaButton";
 import { formatCurrency } from "@/utils/formatters";
 
 function SummaryCard({ label, value, currency }) {
@@ -62,11 +69,11 @@ const DeepDive40 = forwardRef(function DeepDive40(
     }
   }, [deepDive, onDeepDiveResults]);
 
-    // Display calculations
-    const expectedRevenueIncrease = deepDive.deepDiveRevenueIncrease;
-    const expectedNetProfitIncrease = tableOneResults.profitIncrease + deepDive.deepDiveProfitIncrease;
-    const expectedFiveYearImpact = expectedNetProfitIncrease * 5;
-    const newAnnualProfit = tableOneResults.currentProfit + expectedNetProfitIncrease;
+  // Display calculations
+  const expectedRevenueIncrease = deepDive.deepDiveRevenueIncrease;
+  const expectedNetProfitIncrease = tableOneResults.profitIncrease + deepDive.deepDiveProfitIncrease;
+  const expectedFiveYearImpact = expectedNetProfitIncrease * 5;
+  const newAnnualProfit = tableOneResults.currentProfit + expectedNetProfitIncrease;
 
   // Combined totals for display
   const deepDiveRevenueIncrease = deepDive.deepDiveRevenueIncrease;

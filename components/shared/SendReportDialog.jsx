@@ -166,11 +166,6 @@ export default function SendReportDialog({
                 <p className="text-gray-600 mb-4">
                     A detailed report has been emailed to you..
                 </p>
-                {savedSimulationId && (
-                    <p className="text-sm text-gray-500">
-                    Simulation ID: {savedSimulationId.substring(0, 8)}... (temp for development...)
-                    </p>
-                )}
                 </div>
                 <DialogFooter className="justify-center">
                 <Button

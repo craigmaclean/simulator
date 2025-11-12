@@ -1,3 +1,13 @@
+/**
+ * JumpStartCard - Server Component
+ *
+ * Individual JS12 strategy cards that receive props from JumpStartGrid.
+ * Homepage diplays each card with hover effect and card description.
+ * Report page displays each card as an anchor link.
+ *
+ * LinkToSection component used to allow anchor link with smooth scroll.
+ */
+
 import LinkToSection from '../shared/LinkToSection';
 
 export default function JumpStartCard({

@@ -1,3 +1,10 @@
+/**
+ * JumpStart12 - Server Component
+ *
+ * JS12 information section, containing JumpStartGrid child component.
+ * Conditional data displayed if used on report page.
+ */
+
 import JumpStartGrid from "@/components/jumpstart12/JumpStartGrid";
 
 export default function JumpStart12({ isReportPage }) {

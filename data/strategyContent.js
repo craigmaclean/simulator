@@ -1,3 +1,12 @@
+/**
+ * strategyContent data file.
+ *
+ * Used by StrategySection and ReportPDF to retreive JS12 strategy data
+ * for report page and PDF.
+ *
+ * Exports a helper array - STRATEGIES_ARRAY
+ */
+
 export const STRATEGY_CONTENT = {
   'cut-costs': {
     id: 'cut-costs',

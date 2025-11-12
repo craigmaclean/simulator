@@ -1,4 +1,8 @@
-"use client";
+/**
+ * SimulatorResult - Server Component
+ *
+ * Individual simulator result card for JS12 and DD40 results. Props received from SimulatorResults.
+ */
 
 export default function SimulatorResult({ label, value, isDeepDiveResult }) {
   return (

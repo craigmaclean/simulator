@@ -1,4 +1,11 @@
-// API route to handle simulation submissions
+/**
+ * Simulation Submission API Route
+ *
+ * POST endpoint that saves a completed simulation to the database.
+ * Validates user information and business metrics, calculates profit projections for
+ * all 12 strategies, and stores the complete simulation data.
+ *
+ */
 
 import { NextResponse } from 'next/server';
 import { saveSimulation } from '@/lib/db';

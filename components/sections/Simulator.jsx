@@ -1,3 +1,10 @@
+/**
+ * Simulator - Client Component
+ *
+ * Contains the main simulator form, Strategy Tables, and Simulator Results - via child components.
+ * Holds much of the form state.
+ */
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -5,13 +12,11 @@ import SimulatorInputPanel from "@/components/simulator/SimulatorInputPanel";
 import ImpactSlider from "@/components/simulator/ImpactSlider";
 import StrategyTables from "@/components/simulator/StrategyTables";
 import SimulatorResults from "@/components/simulator/SimulatorResults";
-import DeepDive40 from "@/components/sections/DeepDive40";
 import CtaButton from "@/components/shared/CtaButton";
 
 import { calculateResults } from "@/lib/calc/calculateResults";
-// import { calculateDeepDive } from "@/lib/calc/calculateDeepDive"; // keep if you use elsewhere
 
-import { STRATEGIES_12 /*, STRATEGIES_DEEPDIVE */ } from "@/data/strategies";
+import { STRATEGIES_12 } from "@/data/strategies";
 
 export default function Simulator({ onFormSnapshot, onCalculationResults, onOpenReport }) {
 
@@ -97,12 +102,12 @@ export default function Simulator({ onFormSnapshot, onCalculationResults, onOpen
             onChange={handleSliderChange}
             label="Set % Impact Across All Areas"
             tooltipContent={
-                            <>
-                              <p className="font-semibold mb-2">If you want to double your profits, you may only need a 1.4% increase in each of the 12 areas.</p>
-                              <p>If you don't know your margins, use 50% for gross margin and 10% for net margin.</p>
-                            </>
-                          }
-          />
+              <>
+                <p className="font-semibold mb-2">If you want to double your profits, you may only need a 1.4% increase in each of the 12 areas.</p>
+                <p>If you don't know your margins, use 50% for gross margin and 10% for net margin.</p>
+              </>
+            }
+/>
         </div>
 
         <StrategyTables
@@ -112,14 +117,6 @@ export default function Simulator({ onFormSnapshot, onCalculationResults, onOpen
         />
 
         <SimulatorResults results={results} currency={formData.currency} />
-
-        {/* <DeepDive40
-          currency={formData.currency}
-          revenue={formData.revenue}
-          grossMargin={formData.grossMargin}
-          netMargin={formData.netMargin}
-          globalImpact={formData.globalImpact}
-        /> */}
 
         <div className="mt-8 text-center">
           <CtaButton onClick={onOpenReport} variant="primary" className="px-8 py-4 text-lg font-semibold transition hover:bg-opacity-85">

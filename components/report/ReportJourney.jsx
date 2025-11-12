@@ -1,5 +1,11 @@
+/**
+ * ReportJourney - Server Component
+ *
+ * Information section used on report page.
+ */
+
 import Image from 'next/image';
-import  { COACH_FIRST_NAME, COACH_LAST_NAME, CALENDAR_URL } from '@/lib/constants';
+import  { COACH_FIRST_NAME, COACH_LAST_NAME } from '@/lib/constants';
 
 export default function ReportJourney() {
   return (
